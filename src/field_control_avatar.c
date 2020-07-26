@@ -155,7 +155,7 @@ void FieldGetPlayerInput(struct FieldInput *input, u16 newKeys, u16 heldKeys)
     }
 
 #if DEBUG
-    if ((heldKeys & R_BUTTON) && input->pressedStartButton)
+    if ((heldKeys & B_BUTTON) && input->pressedStartButton)
     {
         input->input_field_1_2 = TRUE;
         input->pressedStartButton = FALSE;
