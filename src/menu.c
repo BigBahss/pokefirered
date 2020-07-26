@@ -6,6 +6,12 @@
 #include "text_window.h"
 #include "constants/songs.h"
 
+// used for debug menu (copied from pokeemerald)
+#define DLG_WINDOW_PALETTE_NUM 15
+#define DLG_WINDOW_BASE_TILE_NUM 0x200
+#define STD_WINDOW_PALETTE_NUM 14
+#define STD_WINDOW_BASE_TILE_NUM 0x214
+
 struct Menu
 {
     u8 left;
@@ -35,6 +41,13 @@ static void WindowFunc_ClearStdWindowAndFrameToTransparent(u8 bg, u8 tilemapLeft
 static u8 MultichoiceGrid_MoveCursor(s8 deltaX, s8 deltaY);
 
 static const u8 gUnknown_8456618[3] = {15, 1, 2};
+
+// used for debug menu (name copied from pokeemerald, implemented with pokefirered functions)
+void LoadMessageBoxAndBorderGfx(void)
+{
+    TextWindow_SetStdFrame0_WithPal(0, DLG_WINDOW_BASE_TILE_NUM, DLG_WINDOW_PALETTE_NUM * 0x10);
+    TextWindow_SetUserSelectedFrame(0, STD_WINDOW_BASE_TILE_NUM, STD_WINDOW_PALETTE_NUM * 0x10);
+}
 
 void DrawDialogFrameWithCustomTileAndPalette(u8 windowId, bool8 copyToVram, u16 tileNum, u8 paletteNum)
 {

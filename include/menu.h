@@ -17,6 +17,9 @@ struct MenuAction
     } func;
 };
 
+// used for debug menu (copied from pokeemerald)
+void LoadMessageBoxAndBorderGfx(void);
+
 // menu2
 void AddTextPrinterParameterized3(u8 windowId, u8 fontId, u8 x, u8 y, const u8 * color, s8 speed, const u8 * str);
 void AddTextPrinterParameterized4(u8 windowId, u8 fontId, u8 x, u8 y, u8 letterSpacing, u8 lineSpacing, const u8 *color, s8 speed, const u8 *str);
