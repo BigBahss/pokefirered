@@ -1,6 +1,7 @@
 #if DEBUG
 
 #include "global.h"
+#include "item.h"
 #include "list_menu.h"
 #include "main.h"
 #include "map_name_popup.h"
@@ -10,6 +11,7 @@
 #include "strings.h"
 #include "task.h"
 #include "text_window.h"
+#include "constants/items.h"
 #include "constants/songs.h"
 
 #define DEBUG_MAIN_MENU_HEIGHT 7
@@ -17,23 +19,33 @@
 
 void Debug_ShowMainMenu(void);
 static void Debug_DestroyMainMenu(u8);
+static void DebugAction_RareCandy(u8);
+static void DebugAction_MasterBall(u8);
 static void DebugAction_Cancel(u8);
 static void DebugTask_HandleMainMenuInput(u8);
 
+static const u8 gDebugText_RareCandy[] = _("Rare Candies");
+static const u8 gDebugText_MasterBall[] = _("Master Balls");
+static const u8 gDebugText_Cancel[] = _("Cancel");
+
 enum {
+    DEBUG_MENU_ITEM_RARE_CANDY,
+    DEBUG_MENU_ITEM_MASTER_BALL,
     DEBUG_MENU_ITEM_CANCEL,
 };
 
-static const u8 gDebugText_Cancel[] = _("Cancel");
-
 static const struct ListMenuItem sDebugMenuItems[] =
 {
-    [DEBUG_MENU_ITEM_CANCEL] = {gDebugText_Cancel, DEBUG_MENU_ITEM_CANCEL}
+    [DEBUG_MENU_ITEM_RARE_CANDY] = {gDebugText_RareCandy, DEBUG_MENU_ITEM_RARE_CANDY},
+    [DEBUG_MENU_ITEM_MASTER_BALL] = {gDebugText_MasterBall, DEBUG_MENU_ITEM_MASTER_BALL},
+    [DEBUG_MENU_ITEM_CANCEL] = {gDebugText_Cancel, DEBUG_MENU_ITEM_CANCEL},
 };
 
 static void (*const sDebugMenuActions[])(u8) =
 {
-    [DEBUG_MENU_ITEM_CANCEL] = DebugAction_Cancel
+    [DEBUG_MENU_ITEM_RARE_CANDY] = DebugAction_RareCandy,
+    [DEBUG_MENU_ITEM_MASTER_BALL] = DebugAction_MasterBall,
+    [DEBUG_MENU_ITEM_CANCEL] = DebugAction_Cancel,
 };
 
 static const struct WindowTemplate sDebugMenuWindowTemplate =
@@ -68,7 +80,8 @@ static const struct ListMenuTemplate sDebugMenuListTemplate =
     .cursorKind = 0
 };
 
-void Debug_ShowMainMenu(void) {
+void Debug_ShowMainMenu(void)
+{
     struct ListMenuTemplate menuTemplate;
     u8 windowId;
     u8 menuTaskId;
@@ -119,6 +132,16 @@ static void DebugTask_HandleMainMenuInput(u8 taskId)
         PlaySE(SE_SELECT);
         Debug_DestroyMainMenu(taskId);
     }
+}
+
+static void DebugAction_RareCandy(u8 taskId)
+{
+    AddBagItem(ITEM_RARE_CANDY, 99);
+}
+
+static void DebugAction_MasterBall(u8 taskId)
+{
+    AddBagItem(ITEM_MASTER_BALL, 99);
 }
 
 static void DebugAction_Cancel(u8 taskId)
