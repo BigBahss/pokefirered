@@ -104,6 +104,7 @@ SECTIONS {
         src/coord_event_weather.o(.text);
         src/field_tasks.o(.text);
         src/start_menu.o(.text);
+        src/debug.o(.text);
         src/tileset_anims.o(.text);
         src/palette.o(.text);
         src/sound.o(.text);
@@ -442,6 +443,7 @@ SECTIONS {
         src/coord_event_weather.o(.rodata);
         src/field_tasks.o(.rodata);
         src/start_menu.o(.rodata);
+        src/debug.o(.rodata);
         src/tileset_anims.o(.rodata);
         src/palette.o(.rodata);
         src/sound.o(.rodata);
