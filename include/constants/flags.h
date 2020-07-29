@@ -181,8 +181,10 @@
 #define FLAG_HIDE_MISC_KANTO_ROCKETS                       0x0AD
 #define FLAG_HIDE_SAFFRON_CITY_POKECENTER_SABRINA_JOURNALS 0x0AE
 
+// used for debug menu
+#define FLAG_DEBUG_DISABLE_WILD_ENCOUNTERS                 0x0AF
+
 // Unused?
-#define FLAG_0x0AF               0x0AF
 #define FLAG_0x0B0               0x0B0
 #define FLAG_0x0B1               0x0B1
 #define FLAG_0x0B2               0x0B2

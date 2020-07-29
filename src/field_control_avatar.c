@@ -757,6 +757,11 @@ void RestartWildEncounterImmunitySteps(void)
 
 static bool8 CheckStandardWildEncounter(u32 encounter)
 {
+#if DEBUG
+    if (FlagGet(FLAG_DEBUG_DISABLE_WILD_ENCOUNTERS) != 0)
+        return FALSE;
+#endif
+
     return TryStandardWildEncounter(encounter);
 }
 

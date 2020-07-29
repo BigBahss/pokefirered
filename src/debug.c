@@ -1,6 +1,7 @@
 #if DEBUG
 
 #include "global.h"
+#include "event_data.h"
 #include "item.h"
 #include "list_menu.h"
 #include "main.h"
@@ -20,16 +21,19 @@
 
 void Debug_ShowMainMenu(void);
 static void Debug_DestroyMainMenu(u8);
+static void DebugAction_WildEncounters(u8);
 static void DebugAction_RareCandy(u8);
 static void DebugAction_MasterBall(u8);
 static void DebugAction_Cancel(u8);
 static void DebugTask_HandleMainMenuInput(u8);
 
+static const u8 gDebugText_WildEncounters[] = _("Encounters");
 static const u8 gDebugText_RareCandy[] = _("Rare Candies");
 static const u8 gDebugText_MasterBall[] = _("Master Balls");
 static const u8 gDebugText_Cancel[] = _("Cancel");
 
 enum {
+    DEBUG_MENU_ITEM_WILD_ENCOUNTERS,
     DEBUG_MENU_ITEM_RARE_CANDY,
     DEBUG_MENU_ITEM_MASTER_BALL,
     DEBUG_MENU_ITEM_CANCEL,
@@ -37,6 +41,7 @@ enum {
 
 static const struct ListMenuItem sDebugMenuItems[] =
 {
+    [DEBUG_MENU_ITEM_WILD_ENCOUNTERS] = {gDebugText_WildEncounters, DEBUG_MENU_ITEM_WILD_ENCOUNTERS},
     [DEBUG_MENU_ITEM_RARE_CANDY] = {gDebugText_RareCandy, DEBUG_MENU_ITEM_RARE_CANDY},
     [DEBUG_MENU_ITEM_MASTER_BALL] = {gDebugText_MasterBall, DEBUG_MENU_ITEM_MASTER_BALL},
     [DEBUG_MENU_ITEM_CANCEL] = {gDebugText_Cancel, DEBUG_MENU_ITEM_CANCEL},
@@ -44,6 +49,7 @@ static const struct ListMenuItem sDebugMenuItems[] =
 
 static void (*const sDebugMenuActions[])(u8) =
 {
+    [DEBUG_MENU_ITEM_WILD_ENCOUNTERS] = DebugAction_WildEncounters,
     [DEBUG_MENU_ITEM_RARE_CANDY] = DebugAction_RareCandy,
     [DEBUG_MENU_ITEM_MASTER_BALL] = DebugAction_MasterBall,
     [DEBUG_MENU_ITEM_CANCEL] = DebugAction_Cancel,
@@ -133,6 +139,14 @@ static void DebugTask_HandleMainMenuInput(u8 taskId)
         PlaySE(SE_SELECT);
         Debug_DestroyMainMenu(taskId);
     }
+}
+
+static void DebugAction_WildEncounters(u8 taskId)
+{
+    if (FlagGet(FLAG_DEBUG_DISABLE_WILD_ENCOUNTERS) == 0)
+        FlagSet(FLAG_DEBUG_DISABLE_WILD_ENCOUNTERS);
+    else
+        FlagClear(FLAG_DEBUG_DISABLE_WILD_ENCOUNTERS);
 }
 
 static void DebugAction_RareCandy(u8 taskId)
