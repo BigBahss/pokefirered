@@ -6,6 +6,7 @@
 #include "main.h"
 #include "map_name_popup.h"
 #include "menu.h"
+#include "new_menu_helpers.h"
 #include "script.h"
 #include "sound.h"
 #include "strings.h"
@@ -91,7 +92,7 @@ void Debug_ShowMainMenu(void)
     DismissMapNamePopup();
     LoadMessageBoxAndBorderGfx();
     windowId = AddWindow(&sDebugMenuWindowTemplate);
-    DrawStdFrameWithCustomTileAndPalette(windowId, FALSE, 0x214, 14);
+    DrawStdWindowFrame(windowId, FALSE);
 
     // create list menu
     menuTemplate = sDebugMenuListTemplate;
