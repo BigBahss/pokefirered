@@ -46,6 +46,8 @@ EventScript_PkmnCenterNurse_ReturnPkmn:: @ 81A661D
 	applymovement VAR_LAST_TALKED, Movement_Bow
 	waitmovement 0
 	msgbox Text_WeHopeToSeeYouAgain
+	applymovement OBJ_EVENT_ID_PLAYER, Movement_WalkInPlaceFastestDown
+	waitmovement 0
 	return
 
 EventScript_PkmnCenterNurse_PlayerWaitingInUionRoom:: @ 81A6636
