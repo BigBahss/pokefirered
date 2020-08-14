@@ -514,11 +514,8 @@
 #define MAP_SEVEN_ISLAND_SEVAULT_CANYON_HOUSE (0 | (42 << 8))
 
 // Map Group 43
-#define MAP_ROUTE28_HOUSE (0 | (43 << 8))
 
 // Map Group 44
-#define MAP_MT_SILVER_POKEMON_CENTER_1F (0 | (44 << 8))
-#define MAP_MT_SILVER_POKEMON_CENTER_2F (1 | (44 << 8))
 
 #define MAP_GROUPS_COUNT 45
 
