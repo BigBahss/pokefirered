@@ -24,13 +24,6 @@
       "elevation": 3,
       "dest_map": "MAP_PALLET_TOWN_PLAYERS_HOUSE_1F",
       "dest_warp_id": 2
-    },
-    {
-      "x": 11,
-      "y": 8,
-      "elevation": 0,
-      "dest_map": "MAP_ROUTE28",
-      "dest_warp_id": 0
     }
   ],
   "coord_events": [
