@@ -13,7 +13,13 @@
   "show_map_name": false,
   "floor_number": 0,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-  "connections": 0,
+  "connections": [
+    {
+      "direction": "left",
+      "offset": -18,
+      "map": "MAP_MT_SILVER_EXTERIOR"
+    }
+  ],
   "object_events": [
 
   ],
@@ -22,7 +28,7 @@
       "x": 33,
       "y": 5,
       "elevation": 0,
-      "dest_map": "MAP_PALLET_TOWN_PLAYERS_HOUSE_1F",
+      "dest_map": "MAP_PALLET_TOWN_PLAYERS_HOUSE_2F",
       "dest_warp_id": 1
     },
     {

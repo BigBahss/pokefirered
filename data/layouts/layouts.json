@@ -4409,7 +4409,7 @@
       "id": "LAYOUT_MT_SILVER_EXTERIOR",
       "name": "MtSilver_Exterior_Layout",
       "width": 40,
-      "height": 40,
+      "height": 36,
       "border_width": 2,
       "border_height": 2,
       "primary_tileset": "gTileset_General",
