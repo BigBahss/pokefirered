@@ -4404,6 +4404,18 @@
       "secondary_tileset": "gTileset_PalletTown",
       "border_filepath": "data/layouts/Route28_House/border.bin",
       "blockdata_filepath": "data/layouts/Route28_House/map.bin"
+    },
+    {
+      "id": "LAYOUT_MT_SILVER_EXTERIOR",
+      "name": "MtSilver_Exterior_Layout",
+      "width": 40,
+      "height": 40,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_FuchsiaCity",
+      "border_filepath": "data/layouts/MtSilver_Exterior/border.bin",
+      "blockdata_filepath": "data/layouts/MtSilver_Exterior/map.bin"
     }
   ]
 }

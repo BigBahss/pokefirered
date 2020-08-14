@@ -1365,3 +1365,6 @@ Text_TestMsg:: @ 81ACD45
 
 	.include "data/maps/Route28_House/scripts.inc"
 	.include "data/maps/Route28_House/text.inc"
+
+	.include "data/maps/MtSilver_Exterior/scripts.inc"
+	.include "data/maps/MtSilver_Exterior/text.inc"
