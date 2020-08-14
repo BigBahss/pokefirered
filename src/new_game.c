@@ -145,6 +145,7 @@ void NewGameInitData(void)
     ResetMiniGamesResults();
     InitMEventData();
     SetAllRenewableItemFlags();
+    FlagSet(FLAG_SYS_B_DASH);
     WarpToPlayersRoom();
     ScriptContext2_RunNewScript(EventScript_ResetAllMapFlags);
     StringCopy(gSaveBlock1Ptr->rivalName, rivalName);
