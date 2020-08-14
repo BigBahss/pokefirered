@@ -1368,3 +1368,6 @@ Text_TestMsg:: @ 81ACD45
 
 	.include "data/maps/MtSilver_Exterior/scripts.inc"
 	.include "data/maps/MtSilver_Exterior/text.inc"
+
+	.include "data/maps/MtSilver_PokemonCenter_1F/scripts.inc"
+	.include "data/maps/MtSilver_PokemonCenter_1F/text.inc"
