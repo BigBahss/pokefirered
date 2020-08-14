@@ -514,6 +514,7 @@
 #define MAP_SEVEN_ISLAND_SEVAULT_CANYON_HOUSE (0 | (42 << 8))
 
 // Map Group 43
+#define MAP_ROUTE28_HOUSE (0 | (43 << 8))
 
 // Map Group 44
 
