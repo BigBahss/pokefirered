@@ -11,3 +11,11 @@
 5. Effort values (EV's) are now capped to 252 per stat instead of 255. This change prevents wasted EV's.
 
 6. Default text speed is set to fast.
+
+7. Player looks down after healing at Pokemon Centers.
+
+8. Add option to nickname pokemon from the party menu screen.
+
+9. Change default button mode to LR (disables the annoying help menu).
+
+10. Start the game with the running shoes.
