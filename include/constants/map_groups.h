@@ -519,6 +519,7 @@
 
 // Map Group 44
 #define MAP_MT_SILVER_POKEMON_CENTER_1F (0 | (44 << 8))
+#define MAP_MT_SILVER_POKEMON_CENTER_2F (1 | (44 << 8))
 
 #define MAP_GROUPS_COUNT 45
 

@@ -24,7 +24,20 @@
 
   ],
   "warp_events": [
-
+    {
+      "x": 24,
+      "y": 18,
+      "elevation": 0,
+      "dest_map": "MAP_MT_SILVER_POKEMON_CENTER_1F",
+      "dest_warp_id": 0
+    },
+    {
+      "x": 18,
+      "y": 11,
+      "elevation": 0,
+      "dest_map": "MAP_MT_SILVER_EXTERIOR",
+      "dest_warp_id": 0
+    }
   ],
   "coord_events": [
 

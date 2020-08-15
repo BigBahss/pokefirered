@@ -1,9 +1,9 @@
 {
-  "id": "MAP_SIX_ISLAND_POKEMON_CENTER_2F",
-  "name": "SixIsland_PokemonCenter_2F",
-  "layout": "LAYOUT_POKEMON_CENTER_2F",
+  "id": "MAP_MT_SILVER_POKEMON_CENTER_2F",
+  "name": "MtSilver_PokemonCenter_2F",
+  "layout": "LAYOUT_MT_SILVER_POKEMON_CENTER_2F",
   "music": "MUS_POKECEN",
-  "region_map_section": "MAPSEC_SIX_ISLAND",
+  "region_map_section": "MAPSEC_NONE",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_INDOOR",
@@ -76,8 +76,8 @@
     {
       "x": 1,
       "y": 6,
-      "elevation": 4,
-      "dest_map": "MAP_SIX_ISLAND_POKEMON_CENTER_1F",
+      "elevation": 0,
+      "dest_map": "MAP_MT_SILVER_POKEMON_CENTER_1F",
       "dest_warp_id": 1
     },
     {
