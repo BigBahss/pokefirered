@@ -169,7 +169,7 @@ static void DebugAction_MasterBall(u8 taskId)
 
 static void DebugAction_Warp(u8 taskId)
 {
-    SetWarpDestinationToMapWarp(MAP_GROUP(ROUTE28), MAP_NUM(ROUTE28), 0);
+    SetWarpDestinationToMapWarp(MAP_GROUP(MT_SILVER_EXTERIOR), MAP_NUM(MT_SILVER_EXTERIOR), 0);
     DoWarp();
     Debug_DestroyMainMenu(taskId);
 }
