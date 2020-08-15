@@ -4440,6 +4440,18 @@
       "secondary_tileset": "gTileset_PokemonCenter",
       "border_filepath": "data/layouts/MtSilver_PokemonCenter_2F/border.bin",
       "blockdata_filepath": "data/layouts/MtSilver_PokemonCenter_2F/map.bin"
+    },
+    {
+      "id": "LAYOUT_MT_SILVER_1F",
+      "name": "MtSilver_1F_Layout",
+      "width": 20,
+      "height": 36,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/MtSilver_1F/border.bin",
+      "blockdata_filepath": "data/layouts/MtSilver_1F/map.bin"
     }
   ]
 }
