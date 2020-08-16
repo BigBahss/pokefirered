@@ -1469,3 +1469,26 @@ gTilesetPalettes_HallOfFame:: @ 829F4C8
 	.incbin "data/tilesets/secondary/hall_of_fame/palettes/13.gbapal"
 	.incbin "data/tilesets/secondary/hall_of_fame/palettes/14.gbapal"
 	.incbin "data/tilesets/secondary/hall_of_fame/palettes/15.gbapal"
+
+	.align 2
+gTilesetPalettes_MtSilver::
+	.incbin "data/tilesets/secondary/mt_silver/palettes/00.gbapal"
+	.incbin "data/tilesets/secondary/mt_silver/palettes/01.gbapal"
+	.incbin "data/tilesets/secondary/mt_silver/palettes/02.gbapal"
+	.incbin "data/tilesets/secondary/mt_silver/palettes/03.gbapal"
+	.incbin "data/tilesets/secondary/mt_silver/palettes/04.gbapal"
+	.incbin "data/tilesets/secondary/mt_silver/palettes/05.gbapal"
+	.incbin "data/tilesets/secondary/mt_silver/palettes/06.gbapal"
+	.incbin "data/tilesets/secondary/mt_silver/palettes/07.gbapal"
+	.incbin "data/tilesets/secondary/mt_silver/palettes/08.gbapal"
+	.incbin "data/tilesets/secondary/mt_silver/palettes/09.gbapal"
+	.incbin "data/tilesets/secondary/mt_silver/palettes/10.gbapal"
+	.incbin "data/tilesets/secondary/mt_silver/palettes/11.gbapal"
+	.incbin "data/tilesets/secondary/mt_silver/palettes/12.gbapal"
+	.incbin "data/tilesets/secondary/mt_silver/palettes/13.gbapal"
+	.incbin "data/tilesets/secondary/mt_silver/palettes/14.gbapal"
+	.incbin "data/tilesets/secondary/mt_silver/palettes/15.gbapal"
+
+	.align 2
+gTilesetTiles_MtSilver::
+	.incbin "data/tilesets/secondary/mt_silver/tiles.4bpp.lz"

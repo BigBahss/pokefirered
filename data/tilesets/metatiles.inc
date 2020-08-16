@@ -541,3 +541,11 @@ gMetatiles_HallOfFame:: @ 82D415C
 	.align 1
 gMetatileAttributes_HallOfFame:: @ 82D48BC
 	.incbin "data/tilesets/secondary/hall_of_fame/metatile_attributes.bin"
+
+	.align 1
+gMetatiles_MtSilver::
+	.incbin "data/tilesets/secondary/mt_silver/metatiles.bin"
+
+	.align 1
+gMetatileAttributes_MtSilver::
+	.incbin "data/tilesets/secondary/mt_silver/metatile_attributes.bin"

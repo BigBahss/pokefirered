@@ -4473,7 +4473,7 @@
       "border_width": 2,
       "border_height": 2,
       "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_RockTunnel",
+      "secondary_tileset": "gTileset_MtSilver",
       "border_filepath": "data/layouts/MtSilver_1F_V2/border.bin",
       "blockdata_filepath": "data/layouts/MtSilver_1F_V2/map.bin"
     }

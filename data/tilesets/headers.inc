@@ -747,3 +747,14 @@ gTileset_HallOfFame::
 	.4byte 0x0
 	.4byte gMetatileAttributes_HallOfFame
 
+
+	.align 2
+gTileset_MtSilver::
+	.byte TRUE @ is compressed
+	.byte TRUE @ is secondary
+	.2byte 0
+	.4byte gTilesetTiles_MtSilver
+	.4byte gTilesetPalettes_MtSilver
+	.4byte gMetatiles_MtSilver
+	.4byte NULL
+	.4byte gMetatileAttributes_MtSilver
