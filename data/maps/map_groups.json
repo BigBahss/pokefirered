@@ -179,7 +179,9 @@
     "SixIsland_PatternBush",
     "SixIsland_AlteringCave",
     "MtSilver_Exterior",
-    "MtSilver_1F"
+    "MtSilver_1F",
+    "MtSilver_2F",
+    "MtSilver_1F_V2"
   ],
   "gMapGroup2": [
     "NavelRock_Exterior",
