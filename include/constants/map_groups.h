@@ -133,9 +133,9 @@
 #define MAP_SIX_ISLAND_PATTERN_BUSH              (121 | (1 << 8))
 #define MAP_SIX_ISLAND_ALTERING_CAVE             (122 | (1 << 8))
 #define MAP_MT_SILVER_EXTERIOR                   (123 | (1 << 8))
-#define MAP_MT_SILVER_1F                         (124 | (1 << 8))
-#define MAP_MT_SILVER_2F                         (125 | (1 << 8))
-#define MAP_MT_SILVER_1F_V2                      (126 | (1 << 8))
+#define MAP_MT_SILVER_1F_G2                      (124 | (1 << 8))
+#define MAP_MT_SILVER_2F_G2                      (125 | (1 << 8))
+#define MAP_MT_SILVER_1F                         (126 | (1 << 8))
 
 // Map Group 2
 #define MAP_NAVEL_ROCK_EXTERIOR                       (0 | (2 << 8))

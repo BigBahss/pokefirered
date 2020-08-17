@@ -4442,40 +4442,40 @@
       "blockdata_filepath": "data/layouts/MtSilver_PokemonCenter_2F/map.bin"
     },
     {
-      "id": "LAYOUT_MT_SILVER_1F",
-      "name": "MtSilver_1F_Layout",
+      "id": "LAYOUT_MT_SILVER_1F_G2",
+      "name": "MtSilver_1F_G2_Layout",
       "width": 20,
       "height": 36,
       "border_width": 2,
       "border_height": 2,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Cave",
-      "border_filepath": "data/layouts/MtSilver_1F/border.bin",
-      "blockdata_filepath": "data/layouts/MtSilver_1F/map.bin"
+      "border_filepath": "data/layouts/MtSilver_1F_G2/border.bin",
+      "blockdata_filepath": "data/layouts/MtSilver_1F_G2/map.bin"
     },
     {
-      "id": "LAYOUT_MT_SILVER_2F",
-      "name": "MtSilver_2F_Layout",
+      "id": "LAYOUT_MT_SILVER_2F_G2",
+      "name": "MtSilver_2F_G2_Layout",
       "width": 30,
       "height": 36,
       "border_width": 2,
       "border_height": 2,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Cave",
-      "border_filepath": "data/layouts/MtSilver_2F/border.bin",
-      "blockdata_filepath": "data/layouts/MtSilver_2F/map.bin"
+      "border_filepath": "data/layouts/MtSilver_2F_G2/border.bin",
+      "blockdata_filepath": "data/layouts/MtSilver_2F_G2/map.bin"
     },
     {
-      "id": "LAYOUT_MT_SILVER_1F_V2",
-      "name": "MtSilver_1F_V2_Layout",
+      "id": "LAYOUT_MT_SILVER_1F",
+      "name": "MtSilver_1F_Layout",
       "width": 60,
       "height": 60,
       "border_width": 2,
       "border_height": 2,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_MtSilver",
-      "border_filepath": "data/layouts/MtSilver_1F_V2/border.bin",
-      "blockdata_filepath": "data/layouts/MtSilver_1F_V2/map.bin"
+      "border_filepath": "data/layouts/MtSilver_1F/border.bin",
+      "blockdata_filepath": "data/layouts/MtSilver_1F/map.bin"
     }
   ]
 }
