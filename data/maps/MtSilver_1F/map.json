@@ -24,6 +24,13 @@
       "elevation": 0,
       "dest_map": "MAP_MT_SILVER_EXTERIOR",
       "dest_warp_id": 1
+    },
+    {
+      "x": 32,
+      "y": 32,
+      "elevation": 0,
+      "dest_map": "MAP_MT_SILVER_2F",
+      "dest_warp_id": 0
     }
   ],
   "coord_events": [

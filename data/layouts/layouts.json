@@ -4442,30 +4442,6 @@
       "blockdata_filepath": "data/layouts/MtSilver_PokemonCenter_2F/map.bin"
     },
     {
-      "id": "LAYOUT_MT_SILVER_1F_G2",
-      "name": "MtSilver_1F_G2_Layout",
-      "width": 20,
-      "height": 36,
-      "border_width": 2,
-      "border_height": 2,
-      "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Cave",
-      "border_filepath": "data/layouts/MtSilver_1F_G2/border.bin",
-      "blockdata_filepath": "data/layouts/MtSilver_1F_G2/map.bin"
-    },
-    {
-      "id": "LAYOUT_MT_SILVER_2F_G2",
-      "name": "MtSilver_2F_G2_Layout",
-      "width": 30,
-      "height": 36,
-      "border_width": 2,
-      "border_height": 2,
-      "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Cave",
-      "border_filepath": "data/layouts/MtSilver_2F_G2/border.bin",
-      "blockdata_filepath": "data/layouts/MtSilver_2F_G2/map.bin"
-    },
-    {
       "id": "LAYOUT_MT_SILVER_1F",
       "name": "MtSilver_1F_Layout",
       "width": 60,
