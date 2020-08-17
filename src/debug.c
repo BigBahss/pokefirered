@@ -10,13 +10,19 @@
 #include "menu.h"
 #include "new_menu_helpers.h"
 #include "overworld.h"
+#include "party_menu.h"
+#include "pokemon.h"
 #include "script.h"
+#include "script_pokemon_util.h"
 #include "sound.h"
 #include "strings.h"
 #include "task.h"
 #include "text_window.h"
 #include "constants/items.h"
 #include "constants/maps.h"
+#include "constants/moves.h"
+#include "constants/pokemon.h"
+#include "constants/species.h"
 #include "constants/songs.h"
 
 #define DEBUG_MAIN_MENU_HEIGHT 7
@@ -27,6 +33,7 @@ static void Debug_DestroyMainMenu(u8);
 static void DebugAction_WildEncounters(u8);
 static void DebugAction_RareCandy(u8);
 static void DebugAction_MasterBall(u8);
+static void DebugAction_Mew(u8);
 static void DebugAction_Warp(u8);
 static void DebugAction_Cancel(u8);
 static void DebugTask_HandleMainMenuInput(u8);
@@ -34,6 +41,7 @@ static void DebugTask_HandleMainMenuInput(u8);
 static const u8 gDebugText_WildEncounters[] = _("Encounters");
 static const u8 gDebugText_RareCandy[] = _("Rare Candies");
 static const u8 gDebugText_MasterBall[] = _("Master Balls");
+static const u8 gDebugText_Mew[] = _("Mew + HMs");
 static const u8 gDebugText_Warp[] = _("Warp");
 static const u8 gDebugText_Cancel[] = _("Cancel");
 
@@ -41,6 +49,7 @@ enum {
     DEBUG_MENU_ITEM_WILD_ENCOUNTERS,
     DEBUG_MENU_ITEM_RARE_CANDY,
     DEBUG_MENU_ITEM_MASTER_BALL,
+    DEBUG_MENU_ITEM_MEW,
     DEBUG_MENU_ITEM_WARP,
     DEBUG_MENU_ITEM_CANCEL,
 };
@@ -50,6 +59,7 @@ static const struct ListMenuItem sDebugMenuItems[] =
     [DEBUG_MENU_ITEM_WILD_ENCOUNTERS] = {gDebugText_WildEncounters, DEBUG_MENU_ITEM_WILD_ENCOUNTERS},
     [DEBUG_MENU_ITEM_RARE_CANDY] = {gDebugText_RareCandy, DEBUG_MENU_ITEM_RARE_CANDY},
     [DEBUG_MENU_ITEM_MASTER_BALL] = {gDebugText_MasterBall, DEBUG_MENU_ITEM_MASTER_BALL},
+    [DEBUG_MENU_ITEM_MEW] = {gDebugText_Mew, DEBUG_MENU_ITEM_MEW},
     [DEBUG_MENU_ITEM_WARP] = {gDebugText_Warp, DEBUG_MENU_ITEM_WARP},
     [DEBUG_MENU_ITEM_CANCEL] = {gDebugText_Cancel, DEBUG_MENU_ITEM_CANCEL},
 };
@@ -59,6 +69,7 @@ static void (*const sDebugMenuActions[])(u8) =
     [DEBUG_MENU_ITEM_WILD_ENCOUNTERS] = DebugAction_WildEncounters,
     [DEBUG_MENU_ITEM_RARE_CANDY] = DebugAction_RareCandy,
     [DEBUG_MENU_ITEM_MASTER_BALL] = DebugAction_MasterBall,
+    [DEBUG_MENU_ITEM_MEW] = DebugAction_Mew,
     [DEBUG_MENU_ITEM_WARP] = DebugAction_Warp,
     [DEBUG_MENU_ITEM_CANCEL] = DebugAction_Cancel,
 };
@@ -165,6 +176,31 @@ static void DebugAction_RareCandy(u8 taskId)
 static void DebugAction_MasterBall(u8 taskId)
 {
     AddBagItem(ITEM_MASTER_BALL, 99);
+}
+
+static void DebugAction_Mew(u8 taskId)
+{
+    ScriptGiveMon(SPECIES_MEW, 100, 0, 0, 0, 0);
+    DeleteFirstMoveAndGiveMoveToMon(&gPlayerParty[gPlayerPartyCount - 1], MOVE_SURF);
+    DeleteFirstMoveAndGiveMoveToMon(&gPlayerParty[gPlayerPartyCount - 1], MOVE_FLY);
+    DeleteFirstMoveAndGiveMoveToMon(&gPlayerParty[gPlayerPartyCount - 1], MOVE_WATERFALL);
+    DeleteFirstMoveAndGiveMoveToMon(&gPlayerParty[gPlayerPartyCount - 1], MOVE_CUT);
+    AddBagItem(ITEM_HM01, 1);
+    AddBagItem(ITEM_HM02, 1);
+    AddBagItem(ITEM_HM03, 1);
+    AddBagItem(ITEM_HM04, 1);
+    AddBagItem(ITEM_HM05, 1);
+    AddBagItem(ITEM_HM06, 1);
+    AddBagItem(ITEM_HM07, 1);
+    AddBagItem(ITEM_HM08, 1);
+    FlagSet(FLAG_BADGE01_GET);
+    FlagSet(FLAG_BADGE02_GET);
+    FlagSet(FLAG_BADGE03_GET);
+    FlagSet(FLAG_BADGE04_GET);
+    FlagSet(FLAG_BADGE05_GET);
+    FlagSet(FLAG_BADGE06_GET);
+    FlagSet(FLAG_BADGE07_GET);
+    FlagSet(FLAG_BADGE08_GET);
 }
 
 static void DebugAction_Warp(u8 taskId)
