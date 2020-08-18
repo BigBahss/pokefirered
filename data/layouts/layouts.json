@@ -4476,6 +4476,18 @@
       "secondary_tileset": "gTileset_Cave",
       "border_filepath": "data/layouts/MtSilver_MountainSide_1F/border.bin",
       "blockdata_filepath": "data/layouts/MtSilver_MountainSide_1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_MT_SILVER_3F",
+      "name": "MtSilver_3F_Layout",
+      "width": 41,
+      "height": 41,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_MtSilver",
+      "border_filepath": "data/layouts/MtSilver_3F/border.bin",
+      "blockdata_filepath": "data/layouts/MtSilver_3F/map.bin"
     }
   ]
 }

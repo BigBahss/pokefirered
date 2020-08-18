@@ -136,6 +136,7 @@
 #define MAP_MT_SILVER_1F                         (124 | (1 << 8))
 #define MAP_MT_SILVER_2F                         (125 | (1 << 8))
 #define MAP_MT_SILVER_MOUNTAIN_SIDE_1F           (126 | (1 << 8))
+#define MAP_MT_SILVER_3F                         (127 | (1 << 8))
 
 // Map Group 2
 #define MAP_NAVEL_ROCK_EXTERIOR                       (0 | (2 << 8))
