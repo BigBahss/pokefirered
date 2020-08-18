@@ -80,6 +80,9 @@ static const u8 sIcefallCaveMapPreviewTilemap[] = INCBIN_U8("graphics/map_previe
 static const u8 sAlteringCaveMapPreviewPalette[] = INCBIN_U8("graphics/map_preview/altering_cave_pal.gbapal");
 static const u8 sAlteringCaveMapPreviewTiles[] = INCBIN_U8("graphics/map_preview/altering_cave_tiles.4bpp.lz");
 static const u8 sAlteringCaveMapPreviewTilemap[] = INCBIN_U8("graphics/map_preview/altering_cave_tilemap.bin");
+static const u8 sMtSilverMapPreviewPalette[] = INCBIN_U8("graphics/map_preview/rock_tunnel_pal.gbapal");
+static const u8 sMtSilverMapPreviewTiles[] = INCBIN_U8("graphics/map_preview/rock_tunnel_tiles.4bpp.lz");
+static const u8 sMtSilverMapPreviewTilemap[] = INCBIN_U8("graphics/map_preview/rock_tunnel_tilemap.bin");
 
 static const struct MapPreviewScreen sMapPreviewScreenData[MPS_COUNT] = {
     [MPS_VIRIDIAN_FOREST] = {
@@ -305,7 +308,12 @@ static const struct MapPreviewScreen sMapPreviewScreenData[MPS_COUNT] = {
         .tilesptr = sMoneanChamberMapPreviewTiles,
         .tilemapptr = sMoneanChamberMapPreviewTilemap,
         .palptr = sMoneanChamberMapPreviewPalette
-    }
+    },
+    // [MPS_MT_SILVER] = {
+    //     .mapsec = MAPSEC_MT_SILVER,
+    //     .type = MPS_TYPE_CAVE,
+
+    // }
 };
 
 static const struct WindowTemplate sMapNameWindow = {
