@@ -31,6 +31,27 @@
       "elevation": 0,
       "dest_map": "MAP_MT_SILVER_2F",
       "dest_warp_id": 0
+    },
+    {
+      "x": 49,
+      "y": 31,
+      "elevation": 0,
+      "dest_map": "MAP_MT_SILVER_MOUNTAIN_SIDE_1F",
+      "dest_warp_id": 0
+    },
+    {
+      "x": 51,
+      "y": 26,
+      "elevation": 0,
+      "dest_map": "MAP_MT_SILVER_MOUNTAIN_SIDE_1F",
+      "dest_warp_id": 1
+    },
+    {
+      "x": 53,
+      "y": 14,
+      "elevation": 0,
+      "dest_map": "MAP_MT_SILVER_MOUNTAIN_SIDE_1F",
+      "dest_warp_id": 2
     }
   ],
   "coord_events": [
