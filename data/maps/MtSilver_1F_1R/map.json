@@ -1,12 +1,12 @@
 {
-  "id": "MAP_MT_SILVER_3F",
-  "name": "MtSilver_3F",
-  "layout": "LAYOUT_MT_SILVER_3F",
+  "id": "MAP_MT_SILVER_1F_1R",
+  "name": "MtSilver_1F_1R",
+  "layout": "LAYOUT_MT_SILVER_1F_1R",
   "music": "MUS_CHAMP_R",
   "region_map_section": "MAPSEC_NONE",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
-  "map_type": "MAP_TYPE_NONE",
+  "map_type": "MAP_TYPE_UNDERGROUND",
   "allow_cycling": true,
   "allow_escaping": true,
   "allow_running": true,
@@ -18,7 +18,13 @@
 
   ],
   "warp_events": [
-
+    {
+      "x": 5,
+      "y": 7,
+      "elevation": 0,
+      "dest_map": "MAP_MT_SILVER_1F",
+      "dest_warp_id": 1
+    }
   ],
   "coord_events": [
 

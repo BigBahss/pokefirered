@@ -132,11 +132,6 @@
 #define MAP_SIX_ISLAND_DOTTED_HOLE_SAPPHIRE_ROOM (120 | (1 << 8))
 #define MAP_SIX_ISLAND_PATTERN_BUSH              (121 | (1 << 8))
 #define MAP_SIX_ISLAND_ALTERING_CAVE             (122 | (1 << 8))
-#define MAP_MT_SILVER_EXTERIOR                   (123 | (1 << 8))
-#define MAP_MT_SILVER_1F                         (124 | (1 << 8))
-#define MAP_MT_SILVER_2F                         (125 | (1 << 8))
-#define MAP_MT_SILVER_MOUNTAIN_SIDE_1F           (126 | (1 << 8))
-#define MAP_MT_SILVER_3F                         (127 | (1 << 8))
 
 // Map Group 2
 #define MAP_NAVEL_ROCK_EXTERIOR                       (0 | (2 << 8))
@@ -268,6 +263,7 @@
 #define MAP_SEVEN_ISLAND_SEVAULT_CANYON          (64 | (3 << 8))
 #define MAP_SEVEN_ISLAND_TANOBY_RUINS            (65 | (3 << 8))
 #define MAP_ROUTE28                              (66 | (3 << 8))
+#define MAP_MT_SILVER_EXTERIOR                   (67 | (3 << 8))
 
 // Map Group 4
 #define MAP_PALLET_TOWN_PLAYERS_HOUSE_1F   (0 | (4 << 8))
@@ -524,6 +520,10 @@
 // Map Group 44
 #define MAP_MT_SILVER_POKEMON_CENTER_1F (0 | (44 << 8))
 #define MAP_MT_SILVER_POKEMON_CENTER_2F (1 | (44 << 8))
+#define MAP_MT_SILVER_1F                (2 | (44 << 8))
+#define MAP_MT_SILVER_1F_1R             (3 | (44 << 8))
+#define MAP_MT_SILVER_MOUNTAIN_SIDE_1F  (4 | (44 << 8))
+#define MAP_MT_SILVER_2F                (5 | (44 << 8))
 
 #define MAP_GROUPS_COUNT 45
 

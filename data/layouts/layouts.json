@@ -4454,16 +4454,16 @@
       "blockdata_filepath": "data/layouts/MtSilver_1F/map.bin"
     },
     {
-      "id": "LAYOUT_MT_SILVER_2F",
-      "name": "MtSilver_2F_Layout",
+      "id": "LAYOUT_MT_SILVER_1F_1R",
+      "name": "MtSilver_1F_1R_Layout",
       "width": 11,
       "height": 10,
       "border_width": 2,
       "border_height": 2,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_MtSilver",
-      "border_filepath": "data/layouts/MtSilver_2F/border.bin",
-      "blockdata_filepath": "data/layouts/MtSilver_2F/map.bin"
+      "border_filepath": "data/layouts/MtSilver_1F_1R/border.bin",
+      "blockdata_filepath": "data/layouts/MtSilver_1F_1R/map.bin"
     },
     {
       "id": "LAYOUT_MT_SILVER_MOUNTAIN_SIDE_1F",
@@ -4478,16 +4478,16 @@
       "blockdata_filepath": "data/layouts/MtSilver_MountainSide_1F/map.bin"
     },
     {
-      "id": "LAYOUT_MT_SILVER_3F",
-      "name": "MtSilver_3F_Layout",
+      "id": "LAYOUT_MT_SILVER_2F",
+      "name": "MtSilver_2F_Layout",
       "width": 41,
       "height": 37,
       "border_width": 2,
       "border_height": 2,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_MtSilver",
-      "border_filepath": "data/layouts/MtSilver_3F/border.bin",
-      "blockdata_filepath": "data/layouts/MtSilver_3F/map.bin"
+      "border_filepath": "data/layouts/MtSilver_2F/border.bin",
+      "blockdata_filepath": "data/layouts/MtSilver_2F/map.bin"
     }
   ]
 }

@@ -6,7 +6,7 @@
   "region_map_section": "MAPSEC_NONE",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
-  "map_type": "MAP_TYPE_UNDERGROUND",
+  "map_type": "MAP_TYPE_NONE",
   "allow_cycling": true,
   "allow_escaping": true,
   "allow_running": true,
@@ -19,11 +19,11 @@
   ],
   "warp_events": [
     {
-      "x": 5,
-      "y": 7,
+      "x": 20,
+      "y": 22,
       "elevation": 0,
       "dest_map": "MAP_MT_SILVER_1F",
-      "dest_warp_id": 1
+      "dest_warp_id": 5
     }
   ],
   "coord_events": [

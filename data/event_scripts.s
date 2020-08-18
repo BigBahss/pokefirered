@@ -1378,11 +1378,11 @@ Text_TestMsg:: @ 81ACD45
 	.include "data/maps/MtSilver_1F/scripts.inc"
 	.include "data/maps/MtSilver_1F/text.inc"
 
-	.include "data/maps/MtSilver_2F/scripts.inc"
-	.include "data/maps/MtSilver_2F/text.inc"
+	.include "data/maps/MtSilver_1F_1R/scripts.inc"
+	.include "data/maps/MtSilver_1F_1R/text.inc"
 
 	.include "data/maps/MtSilver_MountainSide_1F/scripts.inc"
 	.include "data/maps/MtSilver_MountainSide_1F/text.inc"
 
-	.include "data/maps/MtSilver_3F/scripts.inc"
-	.include "data/maps/MtSilver_3F/text.inc"
+	.include "data/maps/MtSilver_2F/scripts.inc"
+	.include "data/maps/MtSilver_2F/text.inc"
