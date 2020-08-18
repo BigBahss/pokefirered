@@ -2,6 +2,11 @@
 #include "metatile_behavior.h"
 #include "constants/metatile_behaviors.h"
 
+#define TILE_FLAG_ENCOUNTER_TILE 1
+#define TILE_FLAG_SURFABLE 2
+
+#define TILE_ATTRIBUTES(unused, surfable, wildEncounter) (((wildEncounter) ? 1 : 0) | ((surfable) ? 2 : 0) | ((unused) ? 4 : 0))
+
 static const bool8 sTileSurfable[METATILE_COUNT] = {
     [MB_POND_WATER] = TRUE,
     [MB_SEMI_DEEP_WATER] = TRUE,
@@ -22,6 +27,9 @@ static const u8 sTileBitAttributes[32] = {
     [2] = 0x02,
     [3] = 0x04,
     [4] = 0x08,
+    // [MB_SIDEWAYS_STAIRS_RIGHT] = TILE_ATTRIBUTES(FALSE, FALSE, FALSE),
+    // [MB_SIDEWAYS_STAIRS_LEFT] = TILE_ATTRIBUTES(FALSE, FALSE, FALSE),
+    // [MB_ROCK_STAIRS] = TILE_ATTRIBUTES(FALSE, FALSE, FALSE),
 };
 
 bool8 MetatileBehavior_IsATile(u8 metatileBehavior)
@@ -1032,6 +1040,30 @@ bool8 MetatileBehavior_IsBurglary(u8 metatileBehavior)
 bool8 MetatileBehavior_IsMBA3(u8 metatileBehavior)
 {
     if(metatileBehavior == MB_A3)
+        return TRUE;
+    else
+        return FALSE;
+}
+
+bool8 MetatileBehavior_IsSidewaysStairsRight(u8 metatileBehavior)
+{
+    if (metatileBehavior == MB_SIDEWAYS_STAIRS_RIGHT)
+        return TRUE;
+    else
+        return FALSE;
+}
+
+bool8 MetatileBehavior_IsSidewaysStairsLeft(u8 metatileBehavior)
+{
+    if (metatileBehavior == MB_SIDEWAYS_STAIRS_LEFT)
+        return TRUE;
+    else
+        return FALSE;
+}
+
+bool8 MetatileBehavior_IsRockStairs(u8 metatileBehavior)
+{
+    if (metatileBehavior == MB_ROCK_STAIRS) // || metatileBehavior == MB_SIDEWAYS_STAIRS_LEFT || metatileBehavior == MB_SIDEWAYS_STAIRS_RIGHT)
         return TRUE;
     else
         return FALSE;

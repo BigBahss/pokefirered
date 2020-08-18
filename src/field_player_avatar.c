@@ -40,6 +40,9 @@ static void npc_clear_strange_bits(struct ObjectEvent * playerObjEvent);
 static bool8 TryDoMetatileBehaviorForcedMovement(void);
 static void MovePlayerAvatarUsingKeypadInput(u8 direction, u16 newKeys, u16 heldKeys);
 static void PlayerAllowForcedMovementIfMovingSameDirection(void);
+static bool8 IsSidewaysStairToRight(s16, s16, u8);
+static bool8 IsSidewaysStairToLeft(s16, s16, u8);
+
 static bool8 ForcedMovement_None(void);
 static bool8 ForcedMovement_Slip(void);
 static bool8 ForcedMovement_WalkSouth(void);
@@ -79,6 +82,9 @@ static void PlayerAvatarTransition_Underwater(struct ObjectEvent * playerObject)
 static void PlayerAvatarTransition_ReturnToField(struct ObjectEvent * playerObject);
 static bool8 PlayerIsAnimActive(void);
 static bool8 PlayerCheckIfAnimFinishedOrInactive(void);
+
+static void PlayerGoSlow(u8 direction);
+static void PlayerRunSlow(u8 direction);
 static bool8 player_is_anim_in_certain_ranges(void);
 static bool8 sub_805BF58(void);
 static void PlayCollisionSoundIfNotFacingWarp(u8 direction);
@@ -257,7 +263,7 @@ static bool8 TryDoMetatileBehaviorForcedMovement(void)
     if (!(gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_FIELD_MOVE))
     {
         behavior = gObjectEvents[gPlayerAvatar.objectEventId].currentMetatileBehavior;
-        for (i = 0; sForcedMovementFuncs[i].unk0 != NULL; i++)
+        for (i = 0; i < NELEMS(sForcedMovementTestFuncs); i++)
         {
             if (sForcedMovementFuncs[i].unk0(behavior))
             {
@@ -496,11 +502,33 @@ static void PlayerNotOnBikeMoving(u8 direction, u16 heldKeys)
         {
             PlayerFaceDirection(direction);
         }
-        else if (collision != COLLISION_STOP_SURFING && collision != COLLISION_LEDGE_JUMP && collision != COLLISION_PUSHED_BOULDER && collision != COLLISION_UNKNOWN_WARP_6C_6D_6E_6F)
+        else if (collision == COLLISION_SIDEWAYS_STAIRS_TO_RIGHT_WALKING)
         {
-            PlayerNotOnBikeCollide(direction);
+            PlayerSidewaysStairsToRight(direction);
+            return;
         }
-        return;
+        else if (collision == COLLISION_SIDEWAYS_STAIRS_TO_LEFT_WALKING)
+        {
+            PlayerSidewaysStairsToLeft(direction);
+            return;
+        }
+        else if (collision == COLLISION_SIDEWAYS_STAIRS_TO_RIGHT_RUNNING)
+        {
+            PlayerSidewaysStairsToRightRunning(direction);
+            return;
+        }
+        else if (collision == COLLISION_SIDEWAYS_STAIRS_TO_LEFT_RUNNING)
+        {
+            PlayerSidewaysStairsToLeftRunning(direction);
+            return;
+        }
+        else
+        {
+            u8 adjustedCollision = collision - COLLISION_STOP_SURFING;
+            if (adjustedCollision > 3)
+                PlayerNotOnBikeCollide(direction);
+            return;
+        }
     }
 
     if (gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_SURFING)
@@ -531,22 +559,44 @@ static void PlayerNotOnBikeMoving(u8 direction, u16 heldKeys)
 
 bool32 PlayerIsMovingOnRockStairs(u8 direction)
 {
-    struct ObjectEvent * objectEvent;
-    s16 x, y;
+    #if SLOW_MOVEMENT_ON_STAIRS
+        struct ObjectEvent *objectEvent = &gObjectEvents[gPlayerAvatar.objectEventId];
+        s16 x = objectEvent->currentCoords.x;
+        s16 y = objectEvent->currentCoords.y;
 
-    objectEvent = &gObjectEvents[gPlayerAvatar.objectEventId];
-    x = objectEvent->currentCoords.x;
-    y = objectEvent->currentCoords.y;
-    switch (direction)
-    {
-    case DIR_NORTH:
-        return MetatileBehavior_IsRockStairs(MapGridGetMetatileBehaviorAt(x, y));
-    case DIR_SOUTH:
-        MoveCoords(DIR_SOUTH, &x, &y);
-        return MetatileBehavior_IsRockStairs(MapGridGetMetatileBehaviorAt(x, y));
-    default:
-        return FALSE;
-    }
+        switch (direction)
+        {
+        case DIR_NORTH:
+            return MetatileBehavior_IsRockStairs(MapGridGetMetatileBehaviorAt(x, y));
+        case DIR_SOUTH:
+            MoveCoords(DIR_SOUTH, &x, &y);
+            return MetatileBehavior_IsRockStairs(MapGridGetMetatileBehaviorAt(x, y));
+        /*
+        case DIR_WEST:
+            MoveCoords(DIR_WEST, &x, &y);
+            return MetatileBehavior_IsRockStairs(MapGridGetMetatileBehaviorAt(x, y));
+        case DIR_EAST:
+            MoveCoords(DIR_EAST, &x, &y);
+            return MetatileBehavior_IsRockStairs(MapGridGetMetatileBehaviorAt(x, y));
+        case DIR_SOUTHWEST:
+            MoveCoords(DIR_SOUTHWEST, &x, &y);
+            return MetatileBehavior_IsRockStairs(MapGridGetMetatileBehaviorAt(x, y));
+        case DIR_SOUTHEAST:
+            MoveCoords(DIR_SOUTHEAST, &x, &y);
+            return MetatileBehavior_IsRockStairs(MapGridGetMetatileBehaviorAt(x, y));
+        case DIR_NORTHWEST:
+            MoveCoords(DIR_NORTHWEST, &x, &y);
+            return MetatileBehavior_IsRockStairs(MapGridGetMetatileBehaviorAt(x, y));
+        case DIR_NORTHEAST:
+            MoveCoords(DIR_NORTHEAST, &x, &y);
+            return MetatileBehavior_IsRockStairs(MapGridGetMetatileBehaviorAt(x, y));
+        */
+        default:
+            return FALSE;
+        }
+    #else
+        return FALSE
+    #endif
 }
 
 static u8 CheckForPlayerAvatarCollision(u8 direction)
@@ -556,6 +606,7 @@ static u8 CheckForPlayerAvatarCollision(u8 direction)
 
     x = playerObjEvent->currentCoords.x;
     y = playerObjEvent->currentCoords.y;
+
     if (IsDirectionalStairWarpMetatileBehavior(MapGridGetMetatileBehaviorAt(x, y), direction))
         return 8;
     MoveCoords(direction, &x, &y);
@@ -580,7 +631,26 @@ u8 CheckForObjectEventCollision(struct ObjectEvent *objectEvent, s16 x, s16 y, u
     {
         CheckAcroBikeCollision(x, y, metatileBehavior, &collision);
     }
-    return collision;
+    
+    if (collision != COLLISION_IMPASSABLE)
+    {
+        if (IsSidewaysStairToRight(x, y, direction))
+        {
+            if (gMain.heldKeys & B_BUTTON)
+                return COLLISION_SIDEWAYS_STAIRS_TO_RIGHT_RUNNING;
+            else
+                return COLLISION_SIDEWAYS_STAIRS_TO_RIGHT_WALKING;
+        }
+        else if (IsSidewaysStairToLeft(x, y, direction))
+        {
+            if (gMain.heldKeys & B_BUTTON)
+                return COLLISION_SIDEWAYS_STAIRS_TO_LEFT_RUNNING;
+            else 
+                return COLLISION_SIDEWAYS_STAIRS_TO_LEFT_WALKING;
+        }
+    }
+
+    return collision; 
 }
 
 static const u8 gUnknown_835B820[] = {
@@ -815,6 +885,17 @@ static void PlayerSetAnimId(u8 movementActionId, u8 copyableMovement)
     }
 }
 
+// slow
+static void PlayerGoSlow(u8 direction)
+{
+    PlayerSetAnimId(GetWalkSlowMovementAction(direction), 2);
+}
+
+static void PlayerRunSlow(u8 direction)
+{
+    PlayerSetAnimId(GetPlayerRunSlowMovementAction(direction), 2);
+}
+
 static void sub_805C06C(struct ObjectEvent * objectEvent, u8 movementAction)
 {
     if (!ObjectEventSetHeldMovement(&gObjectEvents[gPlayerAvatar.objectEventId], movementAction))
@@ -852,6 +933,7 @@ void sub_805C134(u8 direction)
     PlayerSetAnimId(sub_8063FDC(direction), 2);
 }
 
+// acro bike speed
 void PlayerRideWaterCurrent(u8 direction)
 {
     PlayerSetAnimId(sub_8064008(direction), 2);
@@ -2151,6 +2233,86 @@ static u8 TeleportAnim_RotatePlayer(struct ObjectEvent *object, s16 *a1)
     ObjectEventForceSetHeldMovement(object, GetFaceDirectionMovementAction(sTeleportFacingDirectionSequence[object->facingDirection]));
     *a1 = 0;
     return sTeleportFacingDirectionSequence[object->facingDirection];
+}
+
+
+//sideways stairs
+static bool8 IsSidewaysStairToRight(s16 x, s16 y, u8 z)
+{
+    if (GetSidewaysStairsToRightDirection(x, y, z) != 0)
+        return TRUE;
+    else
+        return FALSE;
+}
+
+static bool8 IsSidewaysStairToLeft(s16 x, s16 y, u8 z)
+{
+    if (GetSidewaysStairsToLeftDirection(x, y, z) != 0)
+        return TRUE;
+    else
+        return FALSE;
+}
+
+u8 GetRightStairsDirection(u8 direction)
+{
+    switch (direction)
+    {
+    case DIR_WEST:
+        return DIR_SOUTHWEST;
+    case DIR_EAST:
+        return DIR_NORTHEAST;
+    default:
+        if (direction > DIR_EAST)
+            direction -= DIR_EAST;
+
+        return direction;
+    }           
+}
+
+u8 GetLeftStairsDirection(u8 direction)
+{
+    switch (direction)
+    {
+    case DIR_WEST:
+        return DIR_NORTHWEST;
+    case DIR_EAST:
+        return DIR_SOUTHEAST;
+    default:
+        if (direction > DIR_EAST)
+            direction -= DIR_EAST;
+
+        return direction;
+    }
+}
+
+void PlayerSidewaysStairsToRight(u8 direction)
+{
+    PlayerSetAnimId(GetDiagonalRightStairsMovement(direction), 8);
+}
+
+void PlayerSidewaysStairsToLeft(u8 direction)
+{
+    PlayerSetAnimId(GetDiagonalLeftStairsMovement(direction), 8);
+}
+
+void PlayerSidewaysStairsToRightRunning(u8 direction)
+{
+    PlayerSetAnimId(GetDiagonalRightStairsRunningMovement(direction), 8);
+}
+
+void PlayerSidewaysStairsToLeftRunning(u8 direction)
+{
+    PlayerSetAnimId(GetDiagonalLeftStairsRunningMovement(direction), 8);
+}
+
+void PlayerSidewaysStairsToAcroBikeLeft(u8 direction)
+{
+    PlayerSetAnimId(GetDiagonalLeftAcroBikeMovement(direction), 8);
+}
+
+void PlayerSidewaysStairsToAcroBikeRight(u8 direction)
+{
+    PlayerSetAnimId(GetDiagonalRightAcroBikeMovement(direction), 8);
 }
 
 #undef tLandingDelay

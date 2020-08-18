@@ -887,6 +887,18 @@ const u8 gRunningDirectionAnimNums[] = {
     [DIR_NORTHEAST] = 0x15,
 };
 
+const u8 gStairsRunningDirectionAnimNums[] = {
+    [DIR_NONE] = 20,
+    [DIR_SOUTH] = 20,
+    [DIR_NORTH] = 21,
+    [DIR_WEST] = 22,
+    [DIR_EAST] = 23,
+    [DIR_SOUTHWEST] = 22,
+    [DIR_SOUTHEAST] = 23,
+    [DIR_NORTHWEST] = 22,
+    [DIR_NORTHEAST] = 23,
+};
+
 const u8 gTrainerFacingDirectionMovementTypes[] = {
     [DIR_NONE]      = 0x08,
     [DIR_SOUTH]     = 0x08,
@@ -923,14 +935,22 @@ static const struct Coords16 sDirectionToVectors[] = {
     [DIR_SOUTHEAST] = { 1,  1},
     [DIR_NORTHWEST] = {-1, -1},
     [DIR_NORTHEAST] = { 1, -1},
+    {-2,  1},
+    { 2,  1},
+    {-2, -1},
+    { 2, -1},
 };
 
 const u8 gFaceDirectionMovementActions[] = {
-    [DIR_NONE]  = MOVEMENT_ACTION_FACE_DOWN,
-    [DIR_SOUTH] = MOVEMENT_ACTION_FACE_DOWN,
-    [DIR_NORTH] = MOVEMENT_ACTION_FACE_UP,
-    [DIR_WEST]  = MOVEMENT_ACTION_FACE_LEFT,
-    [DIR_EAST]  = MOVEMENT_ACTION_FACE_RIGHT,
+    [DIR_NONE]      = MOVEMENT_ACTION_FACE_DOWN,
+    [DIR_SOUTH]     = MOVEMENT_ACTION_FACE_DOWN,
+    [DIR_NORTH]     = MOVEMENT_ACTION_FACE_UP,
+    [DIR_WEST]      = MOVEMENT_ACTION_FACE_LEFT,
+    [DIR_EAST]      = MOVEMENT_ACTION_FACE_RIGHT,
+    [DIR_SOUTHWEST] = MOVEMENT_ACTION_FACE_LEFT,
+    [DIR_SOUTHEAST] = MOVEMENT_ACTION_FACE_RIGHT,
+    [DIR_NORTHWEST] = MOVEMENT_ACTION_FACE_LEFT,
+    [DIR_NORTHEAST] = MOVEMENT_ACTION_FACE_RIGHT,
 };
 
 const u8 gFaceDirectionFastMovementActions[] = {
@@ -939,6 +959,10 @@ const u8 gFaceDirectionFastMovementActions[] = {
     [DIR_NORTH] = MOVEMENT_ACTION_FACE_UP_FAST,
     [DIR_WEST]  = MOVEMENT_ACTION_FACE_LEFT_FAST,
     [DIR_EAST]  = MOVEMENT_ACTION_FACE_RIGHT_FAST,
+    [DIR_SOUTHWEST] = MOVEMENT_ACTION_FACE_LEFT_FAST,
+    [DIR_SOUTHEAST] = MOVEMENT_ACTION_FACE_RIGHT_FAST,
+    [DIR_NORTHWEST] = MOVEMENT_ACTION_FACE_LEFT_FAST,
+    [DIR_NORTHEAST] = MOVEMENT_ACTION_FACE_RIGHT_FAST,
 };
 
 const u8 gUnknown_83A64F6[] = {
@@ -950,35 +974,43 @@ const u8 gUnknown_83A64F6[] = {
 };
 
 const u8 gUnknown_83A64FB[] = {
-    [DIR_NONE]  = MOVEMENT_ACTION_WALK_SLOWEST_DOWN,
-    [DIR_SOUTH] = MOVEMENT_ACTION_WALK_SLOWEST_DOWN,
-    [DIR_NORTH] = MOVEMENT_ACTION_WALK_SLOWEST_UP,
-    [DIR_WEST]  = MOVEMENT_ACTION_WALK_SLOWEST_LEFT,
-    [DIR_EAST]  = MOVEMENT_ACTION_WALK_SLOWEST_RIGHT,
+    [DIR_NONE]      = MOVEMENT_ACTION_WALK_SLOWEST_DOWN,
+    [DIR_SOUTH]     = MOVEMENT_ACTION_WALK_SLOWEST_DOWN,
+    [DIR_NORTH]     = MOVEMENT_ACTION_WALK_SLOWEST_UP,
+    [DIR_WEST]      = MOVEMENT_ACTION_WALK_SLOWEST_LEFT,
+    [DIR_EAST]      = MOVEMENT_ACTION_WALK_SLOWEST_RIGHT,
 };
 
 const u8 gUnknown_83A6500[] = {
-    [DIR_NONE]  = MOVEMENT_ACTION_WALK_SLOW_DOWN,
-    [DIR_SOUTH] = MOVEMENT_ACTION_WALK_SLOW_DOWN,
-    [DIR_NORTH] = MOVEMENT_ACTION_WALK_SLOW_UP,
-    [DIR_WEST]  = MOVEMENT_ACTION_WALK_SLOW_LEFT,
-    [DIR_EAST]  = MOVEMENT_ACTION_WALK_SLOW_RIGHT,
+    [DIR_NONE]      = MOVEMENT_ACTION_WALK_SLOW_DOWN,
+    [DIR_SOUTH]     = MOVEMENT_ACTION_WALK_SLOW_DOWN,
+    [DIR_NORTH]     = MOVEMENT_ACTION_WALK_SLOW_UP,
+    [DIR_WEST]      = MOVEMENT_ACTION_WALK_SLOW_LEFT,
+    [DIR_EAST]      = MOVEMENT_ACTION_WALK_SLOW_RIGHT,
 };
 
 const u8 gUnknown_83A6505[] = {
-    [DIR_NONE]  = MOVEMENT_ACTION_WALK_NORMAL_DOWN,
-    [DIR_SOUTH] = MOVEMENT_ACTION_WALK_NORMAL_DOWN,
-    [DIR_NORTH] = MOVEMENT_ACTION_WALK_NORMAL_UP,
-    [DIR_WEST]  = MOVEMENT_ACTION_WALK_NORMAL_LEFT,
-    [DIR_EAST]  = MOVEMENT_ACTION_WALK_NORMAL_RIGHT,
+    [DIR_NONE]      = MOVEMENT_ACTION_WALK_NORMAL_DOWN,
+    [DIR_SOUTH]     = MOVEMENT_ACTION_WALK_NORMAL_DOWN,
+    [DIR_NORTH]     = MOVEMENT_ACTION_WALK_NORMAL_UP,
+    [DIR_WEST]      = MOVEMENT_ACTION_WALK_NORMAL_LEFT,
+    [DIR_EAST]      = MOVEMENT_ACTION_WALK_NORMAL_RIGHT,
+    [DIR_SOUTHWEST] = MOVEMENT_ACTION_WALK_STAIRS_DIAGONAL_DOWN_LEFT,
+    [DIR_SOUTHEAST] = MOVEMENT_ACTION_WALK_STAIRS_DIAGONAL_DOWN_RIGHT,
+    [DIR_NORTHWEST] = MOVEMENT_ACTION_WALK_STAIRS_DIAGONAL_UP_LEFT,
+    [DIR_NORTHEAST] = MOVEMENT_ACTION_WALK_STAIRS_DIAGONAL_UP_RIGHT,
 };
 
 const u8 gUnknown_83A650A[] = {
-    [DIR_NONE]  = MOVEMENT_ACTION_WALK_FAST_DOWN,
-    [DIR_SOUTH] = MOVEMENT_ACTION_WALK_FAST_DOWN,
-    [DIR_NORTH] = MOVEMENT_ACTION_WALK_FAST_UP,
-    [DIR_WEST]  = MOVEMENT_ACTION_WALK_FAST_LEFT,
-    [DIR_EAST]  = MOVEMENT_ACTION_WALK_FAST_RIGHT,
+    [DIR_NONE]      = MOVEMENT_ACTION_WALK_FAST_DOWN,
+    [DIR_SOUTH]     = MOVEMENT_ACTION_WALK_FAST_DOWN,
+    [DIR_NORTH]     = MOVEMENT_ACTION_WALK_FAST_UP,
+    [DIR_WEST]      = MOVEMENT_ACTION_WALK_FAST_LEFT,
+    [DIR_EAST]      = MOVEMENT_ACTION_WALK_FAST_RIGHT,
+    [DIR_SOUTHWEST] = MOVEMENT_ACTION_RIDE_WATER_CURRENT_DOWN_LEFT,
+    [DIR_SOUTHEAST] = MOVEMENT_ACTION_RIDE_WATER_CURRENT_DOWN_RIGHT,
+    [DIR_NORTHWEST] = MOVEMENT_ACTION_RIDE_WATER_CURRENT_UP_LEFT,
+    [DIR_NORTHEAST] = MOVEMENT_ACTION_RIDE_WATER_CURRENT_UP_RIGHT,
 };
 
 const u8 gUnknown_83A650F[] = {
@@ -990,43 +1022,52 @@ const u8 gUnknown_83A650F[] = {
 };
 
 const u8 gUnknown_83A6514[] = {
-    [DIR_NONE]  = MOVEMENT_ACTION_FACE_DOWN_SLOW,
-    [DIR_SOUTH] = MOVEMENT_ACTION_FACE_DOWN_SLOW,
-    [DIR_NORTH] = MOVEMENT_ACTION_FACE_UP_SLOW,
-    [DIR_WEST]  = MOVEMENT_ACTION_FACE_LEFT_SLOW,
-    [DIR_EAST]  = MOVEMENT_ACTION_FACE_RIGHT_SLOW,
+    [DIR_NONE]      = MOVEMENT_ACTION_FACE_DOWN_SLOW,
+    [DIR_SOUTH]     = MOVEMENT_ACTION_FACE_DOWN_SLOW,
+    [DIR_NORTH]     = MOVEMENT_ACTION_FACE_UP_SLOW,
+    [DIR_WEST]      = MOVEMENT_ACTION_FACE_LEFT_SLOW,
+    [DIR_EAST]      = MOVEMENT_ACTION_FACE_RIGHT_SLOW,
+    [DIR_SOUTHWEST] = MOVEMENT_ACTION_FACE_LEFT_SLOW,
+    [DIR_SOUTHEAST] = MOVEMENT_ACTION_FACE_RIGHT_SLOW,
+    [DIR_NORTHWEST] = MOVEMENT_ACTION_FACE_LEFT_SLOW,
+    [DIR_NORTHEAST] = MOVEMENT_ACTION_FACE_RIGHT_SLOW,
 };
 
 const u8 gUnknown_83A6519[] = {
-    [DIR_NONE]  = MOVEMENT_ACTION_WALK_FASTEST_DOWN,
-    [DIR_SOUTH] = MOVEMENT_ACTION_WALK_FASTEST_DOWN,
-    [DIR_NORTH] = MOVEMENT_ACTION_WALK_FASTEST_UP,
-    [DIR_WEST]  = MOVEMENT_ACTION_WALK_FASTEST_LEFT,
-    [DIR_EAST]  = MOVEMENT_ACTION_WALK_FASTEST_RIGHT,
+    [DIR_NONE]      = MOVEMENT_ACTION_WALK_FASTEST_DOWN,
+    [DIR_SOUTH]     = MOVEMENT_ACTION_WALK_FASTEST_DOWN,
+    [DIR_NORTH]     = MOVEMENT_ACTION_WALK_FASTEST_UP,
+    [DIR_WEST]      = MOVEMENT_ACTION_WALK_FASTEST_LEFT,
+    [DIR_EAST]      = MOVEMENT_ACTION_WALK_FASTEST_RIGHT,
 };
 
 const u8 gUnknown_83A651E[] = {
-    [DIR_NONE]  = MOVEMENT_ACTION_SLIDE_DOWN,
-    [DIR_SOUTH] = MOVEMENT_ACTION_SLIDE_DOWN,
-    [DIR_NORTH] = MOVEMENT_ACTION_SLIDE_UP,
-    [DIR_WEST]  = MOVEMENT_ACTION_SLIDE_LEFT,
-    [DIR_EAST]  = MOVEMENT_ACTION_SLIDE_RIGHT,
+    [DIR_NONE]      = MOVEMENT_ACTION_SLIDE_DOWN,
+    [DIR_SOUTH]     = MOVEMENT_ACTION_SLIDE_DOWN,
+    [DIR_NORTH]     = MOVEMENT_ACTION_SLIDE_UP,
+    [DIR_WEST]      = MOVEMENT_ACTION_SLIDE_LEFT,
+    [DIR_EAST]      = MOVEMENT_ACTION_SLIDE_RIGHT,
+    
 };
 
 const u8 gUnknown_83A6523[] = {
-    [DIR_NONE]  = MOVEMENT_ACTION_PLAYER_RUN_DOWN,
-    [DIR_SOUTH] = MOVEMENT_ACTION_PLAYER_RUN_DOWN,
-    [DIR_NORTH] = MOVEMENT_ACTION_PLAYER_RUN_UP,
-    [DIR_WEST]  = MOVEMENT_ACTION_PLAYER_RUN_LEFT,
-    [DIR_EAST]  = MOVEMENT_ACTION_PLAYER_RUN_RIGHT,
+    [DIR_NONE]      = MOVEMENT_ACTION_PLAYER_RUN_DOWN,
+    [DIR_SOUTH]     = MOVEMENT_ACTION_PLAYER_RUN_DOWN,
+    [DIR_NORTH]     = MOVEMENT_ACTION_PLAYER_RUN_UP,
+    [DIR_WEST]      = MOVEMENT_ACTION_PLAYER_RUN_LEFT,
+    [DIR_EAST]      = MOVEMENT_ACTION_PLAYER_RUN_RIGHT,
+    [DIR_SOUTHWEST] = MOVEMENT_ACTION_WALK_STAIRS_DIAGONAL_DOWN_LEFT_RUNNING,
+    [DIR_SOUTHEAST] = MOVEMENT_ACTION_WALK_STAIRS_DIAGONAL_DOWN_RIGHT_RUNNING,
+    [DIR_NORTHWEST] = MOVEMENT_ACTION_WALK_STAIRS_DIAGONAL_UP_LEFT_RUNNING,
+    [DIR_NORTHEAST] = MOVEMENT_ACTION_WALK_STAIRS_DIAGONAL_UP_RIGHT_RUNNING,
 };
 
 const u8 gUnknown_83A6528[] = {
-    [DIR_NONE]  = MOVEMENT_ACTION_PLAYER_RUN_DOWN_SLOW,
-    [DIR_SOUTH] = MOVEMENT_ACTION_PLAYER_RUN_DOWN_SLOW,
-    [DIR_NORTH] = MOVEMENT_ACTION_PLAYER_RUN_UP_SLOW,
-    [DIR_WEST]  = MOVEMENT_ACTION_PLAYER_RUN_LEFT_SLOW,
-    [DIR_EAST]  = MOVEMENT_ACTION_PLAYER_RUN_RIGHT_SLOW,
+    [DIR_NONE]      = MOVEMENT_ACTION_PLAYER_RUN_DOWN_SLOW,
+    [DIR_SOUTH]     = MOVEMENT_ACTION_PLAYER_RUN_DOWN_SLOW,
+    [DIR_NORTH]     = MOVEMENT_ACTION_PLAYER_RUN_UP_SLOW,
+    [DIR_WEST]      = MOVEMENT_ACTION_PLAYER_RUN_LEFT_SLOW,
+    [DIR_EAST]      = MOVEMENT_ACTION_PLAYER_RUN_RIGHT_SLOW,
 };
 
 const u8 gUnknown_83A652D[] = {
@@ -1187,6 +1228,48 @@ const u8 gUnknown_83A658C[] = {
     [DIR_NORTH] = MOVEMENT_ACTION_ACRO_WHEELIE_MOVE_UP,
     [DIR_WEST]  = MOVEMENT_ACTION_ACRO_WHEELIE_MOVE_LEFT,
     [DIR_EAST]  = MOVEMENT_ACTION_ACRO_WHEELIE_MOVE_RIGHT,
+};
+
+// run slow
+const u8 gRunSlowMovementActions[] = {
+    [DIR_NONE]  = MOVEMENT_ACTION_RUN_DOWN_SLOW,
+    [DIR_SOUTH] = MOVEMENT_ACTION_RUN_DOWN_SLOW,
+    [DIR_NORTH] = MOVEMENT_ACTION_RUN_UP_SLOW,
+    [DIR_WEST]  = MOVEMENT_ACTION_RUN_LEFT_SLOW,
+    [DIR_EAST]  = MOVEMENT_ACTION_RUN_RIGHT_SLOW,
+};
+
+// sideways stairs
+const u8 gDiagonalStairRightMovementActions[] = {
+    [DIR_NONE] = MOVEMENT_ACTION_JUMP_2_RIGHT,
+    [DIR_SOUTH] = MOVEMENT_ACTION_JUMP_2_DOWN,
+    [DIR_NORTH] = MOVEMENT_ACTION_JUMP_2_UP,
+    [DIR_WEST] = MOVEMENT_ACTION_WALK_STAIRS_DIAGONAL_DOWN_LEFT,
+    [DIR_EAST] = MOVEMENT_ACTION_WALK_STAIRS_DIAGONAL_UP_RIGHT,
+};
+
+const u8 gDiagonalStairLeftMovementActions[] = {
+    [DIR_NONE] = MOVEMENT_ACTION_JUMP_2_LEFT,
+    [DIR_SOUTH] = MOVEMENT_ACTION_JUMP_2_DOWN,
+    [DIR_NORTH] = MOVEMENT_ACTION_JUMP_2_UP,
+    [DIR_WEST] = MOVEMENT_ACTION_WALK_STAIRS_DIAGONAL_UP_LEFT,
+    [DIR_EAST] = MOVEMENT_ACTION_WALK_STAIRS_DIAGONAL_DOWN_RIGHT,
+};
+
+const u8 gDiagonalStairRightRunningMovementActions[] = {
+    [DIR_NONE] = MOVEMENT_ACTION_JUMP_2_RIGHT,
+    [DIR_SOUTH] = MOVEMENT_ACTION_JUMP_2_DOWN,
+    [DIR_NORTH] = MOVEMENT_ACTION_JUMP_2_UP,
+    [DIR_WEST] = MOVEMENT_ACTION_WALK_STAIRS_DIAGONAL_DOWN_LEFT_RUNNING,
+    [DIR_EAST] = MOVEMENT_ACTION_WALK_STAIRS_DIAGONAL_UP_RIGHT_RUNNING,
+};
+
+const u8 gDiagonalStairLeftRunningMovementActions[] = {
+    [DIR_NONE] = MOVEMENT_ACTION_JUMP_2_LEFT,
+    [DIR_SOUTH] = MOVEMENT_ACTION_JUMP_2_DOWN,
+    [DIR_NORTH] = MOVEMENT_ACTION_JUMP_2_UP,
+    [DIR_WEST] = MOVEMENT_ACTION_WALK_STAIRS_DIAGONAL_UP_LEFT_RUNNING,
+    [DIR_EAST] = MOVEMENT_ACTION_WALK_STAIRS_DIAGONAL_DOWN_RIGHT_RUNNING,
 };
 
 const u8 gOppositeDirections[] = {
@@ -5427,12 +5510,19 @@ u8 name(u32 idx)                                    \
     u8 animIds[sizeof(table)];                      \
     direction = idx;                                \
     memcpy(animIds, (table), sizeof(table));        \
-    if (direction > DIR_EAST) direction = DIR_NONE; \
+    if (direction > sizeof(table)) direction = 0;   \
     return animIds[direction];                      \
 }
 
+//sideways stairs
+dirn_to_anim(GetDiagonalRightStairsMovement, gDiagonalStairRightMovementActions);
+dirn_to_anim(GetDiagonalLeftStairsMovement, gDiagonalStairLeftMovementActions);
+dirn_to_anim(GetDiagonalRightStairsRunningMovement, gDiagonalStairRightRunningMovementActions);
+dirn_to_anim(GetDiagonalLeftStairsRunningMovement, gDiagonalStairLeftRunningMovementActions);
+
 dirn_to_anim(GetFaceDirectionMovementAction, gFaceDirectionMovementActions);
 dirn_to_anim(GetFaceDirectionFastMovementAction, gFaceDirectionFastMovementActions);
+dirn_to_anim(GetPlayerRunSlowMovementAction, gRunSlowMovementActions);
 
 u8 sub_8063F10(u32 idx)
 {
@@ -9687,4 +9777,206 @@ static void DoRippleFieldEffect(struct ObjectEvent *objectEvent, struct Sprite *
     gFieldEffectArguments[2] = 151;
     gFieldEffectArguments[3] = 3;
     FieldEffectStart(FLDEFF_RIPPLE);
+}
+
+// running slow
+static void StartSlowRunningAnim(struct ObjectEvent *objectEvent, struct Sprite *sprite, u8 direction)
+{
+    sub_8093AF0(objectEvent, sprite, direction);
+    npc_apply_anim_looping(objectEvent, sprite, GetRunningDirectionAnimNum(objectEvent->facingDirection));
+}
+
+#define tDirection data[3]
+#define tDelay     data[4]
+#define tStepNo    data[5]
+static bool8 obj_npc_ministep_slow(struct Sprite *sprite)
+{
+    if ((++sprite->tDelay) & 1)
+    {
+        Step1(sprite, sprite->tDirection);
+        sprite->tStepNo++;
+    }
+    else
+    {
+        Step2(sprite, sprite->tDirection);
+        sprite->tStepNo += 2;
+    }
+
+    if (sprite->tStepNo > 15)
+        return TRUE;
+    else
+        return FALSE;
+}
+
+static bool8 npc_obj_ministep_stop_on_arrival_slow(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    if (obj_npc_ministep_slow(sprite))
+    {
+        ShiftStillObjectEventCoords(objectEvent);
+        objectEvent->triggerGroundEffectsOnStop = TRUE;
+        sprite->animPaused = TRUE;
+        return TRUE;
+    }
+    return FALSE;
+}
+
+bool8 MovementActionFunc_RunSlowDown_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    StartSlowRunningAnim(objectEvent, sprite, DIR_SOUTH);
+    return MovementActionFunc_RunSlow_Step1(objectEvent, sprite);
+}
+
+bool8 MovementActionFunc_RunSlowUp_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    StartSlowRunningAnim(objectEvent, sprite, DIR_NORTH);
+    return MovementActionFunc_RunSlow_Step1(objectEvent, sprite);
+}
+
+bool8 MovementActionFunc_RunSlowLeft_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    StartSlowRunningAnim(objectEvent, sprite, DIR_WEST);
+    return MovementActionFunc_RunSlow_Step1(objectEvent, sprite);
+}
+
+bool8 MovementActionFunc_RunSlowRight_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    StartSlowRunningAnim(objectEvent, sprite, DIR_EAST);
+    return MovementActionFunc_RunSlow_Step1(objectEvent, sprite);
+}
+
+bool8 MovementActionFunc_RunSlow_Step1(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    if (npc_obj_ministep_stop_on_arrival_slow(objectEvent, sprite))
+    {
+        sprite->data[2] = 2;
+        return TRUE;
+    }
+    return FALSE;
+}
+
+//sideways stairs
+u8 GetSidewaysStairsToRightDirection(s16 x, s16 y, u8 z)
+{
+    static bool8 (*const direction[])(u8) = {
+        MetatileBehavior_IsWalkSouth,
+        MetatileBehavior_IsWalkNorth,
+        MetatileBehavior_IsSidewaysStairsRight,
+        MetatileBehavior_IsSidewaysStairsRight,
+    };
+
+    u8 b;
+    u8 index = z;
+
+    if (index == 0)
+        return 0;
+    else if (index > 4)
+        index -= 4;
+
+    index--;
+    b = MapGridGetMetatileBehaviorAt(x, y);
+
+    if (direction[index](b) == 1)
+        return index + 1;
+
+    return 0;
+}
+
+u8 GetSidewaysStairsToLeftDirection(s16 x, s16 y, u8 z)
+{
+    static bool8 (*const direction[])(u8) = {
+        MetatileBehavior_IsWalkSouth,
+        MetatileBehavior_IsWalkNorth,
+        MetatileBehavior_IsSidewaysStairsLeft,
+        MetatileBehavior_IsSidewaysStairsLeft,
+    };
+
+    u8 b;
+    u8 index = z;
+
+    if (index == 0)
+        return 0;
+    else if (index > 4)
+        index -= 4;
+
+    index--;
+    b = MapGridGetMetatileBehaviorAt(x, y);
+
+    if (direction[index](b) == 1)
+        return index + 1;
+
+    return 0;
+}
+
+bool8 MovementAction_WalkStairDiagonalUpLeft_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    objectEvent->facingDirection = DIR_WEST;
+    objectEvent->facingDirectionLocked = TRUE;
+    sub_8093B60(objectEvent, sprite, DIR_NORTHWEST);
+    return MovementAction_WalkSlowDiagonalUpLeft_Step1(objectEvent, sprite);
+}
+
+bool8 MovementAction_WalkStairDiagonalUpRight_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    objectEvent->facingDirection = DIR_EAST;
+    objectEvent->facingDirectionLocked = TRUE;
+    sub_8093B60(objectEvent, sprite, DIR_NORTHEAST);
+    return MovementAction_WalkSlowDiagonalUpRight_Step1(objectEvent, sprite);
+}
+
+bool8 MovementAction_WalkStairDiagonalDownLeft_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    objectEvent->facingDirection = DIR_WEST;
+    objectEvent->facingDirectionLocked = TRUE;
+    sub_8093B60(objectEvent, sprite, DIR_SOUTHWEST);
+    return MovementAction_WalkSlowDiagonalDownLeft_Step1(objectEvent, sprite);
+}
+
+bool8 MovementAction_WalkStairDiagonalDownRight_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    objectEvent->facingDirection = DIR_EAST;
+    objectEvent->facingDirectionLocked = TRUE;
+    sub_8093B60(objectEvent, sprite, DIR_SOUTHEAST);
+    return MovementAction_WalkSlowDiagonalDownRight_Step1(objectEvent, sprite);
+}
+
+bool8 MovementAction_RunStairDiagonalUpLeft_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    objectEvent->facingDirection = DIR_WEST;
+    objectEvent->facingDirectionLocked = TRUE;
+    StartSlowRunningAnim(objectEvent, sprite, DIR_NORTHWEST);
+    return MovementAction_RunStairDiagonal_Step1(objectEvent, sprite);
+}
+
+bool8 MovementAction_RunStairDiagonalUpRight_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    objectEvent->facingDirection = DIR_EAST;
+    objectEvent->facingDirectionLocked = TRUE;
+    StartSlowRunningAnim(objectEvent, sprite, DIR_NORTHEAST);
+    return MovementAction_RunStairDiagonal_Step1(objectEvent, sprite);
+}
+
+bool8 MovementAction_RunStairDiagonalDownLeft_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    objectEvent->facingDirection = DIR_WEST;
+    objectEvent->facingDirectionLocked = TRUE;
+    StartSlowRunningAnim(objectEvent, sprite, DIR_SOUTHWEST);
+    return MovementAction_RunStairDiagonal_Step1(objectEvent, sprite);
+}
+
+bool8 MovementAction_RunStairDiagonalDownRight_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    objectEvent->facingDirection = DIR_EAST;
+    objectEvent->facingDirectionLocked = TRUE;
+    StartSlowRunningAnim(objectEvent, sprite, DIR_SOUTHEAST);
+    return MovementAction_RunStairDiagonal_Step1(objectEvent, sprite);
+}
+
+bool8 MovementAction_RunStairDiagonal_Step1(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    if (npc_obj_ministep_stop_on_arrival(objectEvent, sprite))
+    {
+        sprite->data[2] = 2;
+        return TRUE;
+    }
+    return FALSE;
 }

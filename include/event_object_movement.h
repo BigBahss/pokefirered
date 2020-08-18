@@ -224,4 +224,16 @@ u8 GetFishingBiteDirectionAnimNum(u8 direction);
 void TrySpawnObjectEvents(s16 cameraX, s16 cameraY);
 void ResetObjectEvents(void);
 
+// run slow
+u8 GetPlayerRunSlowMovementAction(u32);
+//sideways stairs
+u8 GetSidewaysStairsToRightDirection(s16, s16, u8);
+u8 GetSidewaysStairsToLeftDirection(s16, s16, u8);
+u8 GetDiagonalRightStairsMovement(u32);
+u8 GetDiagonalLeftStairsMovement(u32);
+u8 GetDiagonalRightStairsRunningMovement(u32);
+u8 GetDiagonalLeftStairsRunningMovement(u32);
+u8 GetDiagonalLeftAcroBikeMovement(u32);
+u8 GetDiagonalRightAcroBikeMovement(u32);
+
 #endif // GUARD_EVENT_OBJECT_MOVEMENT_H
