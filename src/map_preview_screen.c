@@ -309,11 +309,14 @@ static const struct MapPreviewScreen sMapPreviewScreenData[MPS_COUNT] = {
         .tilemapptr = sMoneanChamberMapPreviewTilemap,
         .palptr = sMoneanChamberMapPreviewPalette
     },
-    // [MPS_MT_SILVER] = {
-    //     .mapsec = MAPSEC_MT_SILVER,
-    //     .type = MPS_TYPE_CAVE,
-
-    // }
+    [MPS_MT_SILVER] = {
+        .mapsec = MAPSEC_MT_SILVER,
+        .type = MPS_TYPE_CAVE,
+        .flagId = FLAG_WORLD_MAP_MT_SILVER,
+        .tilesptr = sMtSilverMapPreviewTiles,
+        .tilemapptr = sMtSilverMapPreviewTilemap,
+        .palptr = sMtSilverMapPreviewPalette
+    }
 };
 
 static const struct WindowTemplate sMapNameWindow = {

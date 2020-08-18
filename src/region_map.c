@@ -930,6 +930,7 @@ static const u8 *const sMapNames[] = {
     [MAPSEC_EMBER_SPA           - MAPSECS_KANTO] = gMapSecName_EmberSpa,
     [MAPSEC_SPECIAL_AREA        - MAPSECS_KANTO] = gMapSecName_CeladonDept,
     [MAPSEC_ROUTE_28            - MAPSECS_KANTO] = gMapSecName_Route28,
+    [MAPSEC_MT_SILVER_EXTERIOR  - MAPSECS_KANTO] = gMapSecName_MtSilverExterior,
     [MAPSEC_MT_SILVER           - MAPSECS_KANTO] = gMapSecName_MtSilver,
 };
 
@@ -1290,7 +1291,7 @@ static const u8 sMapFlyDestinations[][3] = {
     [MAPSEC_SAFFRON_CITY        - MAPSECS_KANTO] = {MAP(SAFFRON_CITY),                          SPAWN_SAFFRON_CITY},
     [MAPSEC_ROUTE_4_POKECENTER  - MAPSECS_KANTO] = {MAP(ROUTE4),                                SPAWN_ROUTE4},
     [MAPSEC_ROUTE_10_POKECENTER - MAPSECS_KANTO] = {MAP(ROUTE10),                               SPAWN_ROUTE10},
-    [MAPSEC_MT_SILVER           - MAPSECS_KANTO] = {MAP(ROUTE28),                               SPAWN_MT_SILVER_EXTERIOR},
+    [MAPSEC_MT_SILVER_EXTERIOR  - MAPSECS_KANTO] = {MAP(ROUTE28),                               SPAWN_MT_SILVER_EXTERIOR},
     [MAPSEC_ROUTE_1             - MAPSECS_KANTO] = {MAP(ROUTE1),                                0},
     [MAPSEC_ROUTE_2             - MAPSECS_KANTO] = {MAP(ROUTE2),                                0},
     [MAPSEC_ROUTE_3             - MAPSECS_KANTO] = {MAP(ROUTE3),                                0},

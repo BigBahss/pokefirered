@@ -108,4 +108,5 @@ const u8 gMapSecName_ViapoisChamber[] = _("VIAPOIS CHAMBER");
 const u8 gMapSecName_EmberSpa[] = _("EMBER SPA");
 const u8 gMapSecName_CeladonDept[] = _("CELADON DEPT.");
 const u8 gMapSecName_Route28[] = _("ROUTE 28");
+const u8 gMapSecName_MtSilverExterior[] = _("MT. SILVER");
 const u8 gMapSecName_MtSilver[] = _("MT. SILVER");
