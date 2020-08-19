@@ -524,6 +524,9 @@
 #define MAP_MT_SILVER_1F_1R             (3 | (44 << 8))
 #define MAP_MT_SILVER_MOUNTAIN_SIDE_1F  (4 | (44 << 8))
 #define MAP_MT_SILVER_2F                (5 | (44 << 8))
+#define MAP_MT_SILVER_MOUNTAIN_SIDE_2F  (6 | (44 << 8))
+#define MAP_MT_SILVER_3F                (7 | (44 << 8))
+#define MAP_MT_SILVER_SUMMIT            (8 | (44 << 8))
 
 #define MAP_GROUPS_COUNT 45
 

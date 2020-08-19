@@ -4488,6 +4488,42 @@
       "secondary_tileset": "gTileset_MtSilver",
       "border_filepath": "data/layouts/MtSilver_2F/border.bin",
       "blockdata_filepath": "data/layouts/MtSilver_2F/map.bin"
+    },
+    {
+      "id": "LAYOUT_MT_SILVER_MOUNTAIN_SIDE_2F",
+      "name": "MtSilver_MountainSide_2F_Layout",
+      "width": 80,
+      "height": 80,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_SeafoamIslands",
+      "border_filepath": "data/layouts/MtSilver_MountainSide_2F/border.bin",
+      "blockdata_filepath": "data/layouts/MtSilver_MountainSide_2F/map.bin"
+    },
+    {
+      "id": "LAYOUT_MT_SILVER_3F",
+      "name": "MtSilver_3F_Layout",
+      "width": 60,
+      "height": 60,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_MtSilver",
+      "border_filepath": "data/layouts/MtSilver_3F/border.bin",
+      "blockdata_filepath": "data/layouts/MtSilver_3F/map.bin"
+    },
+    {
+      "id": "LAYOUT_MT_SILVER_SUMMIT",
+      "name": "MtSilver_Summit_Layout",
+      "width": 60,
+      "height": 40,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_SeafoamIslands",
+      "border_filepath": "data/layouts/MtSilver_Summit/border.bin",
+      "blockdata_filepath": "data/layouts/MtSilver_Summit/map.bin"
     }
   ]
 }
