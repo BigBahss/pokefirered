@@ -4504,8 +4504,8 @@
     {
       "id": "LAYOUT_MT_SILVER_3F",
       "name": "MtSilver_3F_Layout",
-      "width": 60,
-      "height": 60,
+      "width": 49,
+      "height": 31,
       "border_width": 2,
       "border_height": 2,
       "primary_tileset": "gTileset_General",
