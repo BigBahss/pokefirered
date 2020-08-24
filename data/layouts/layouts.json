@@ -4468,12 +4468,12 @@
     {
       "id": "LAYOUT_MT_SILVER_MOUNTAIN_SIDE_1F",
       "name": "MtSilver_MountainSide_1F_Layout",
-      "width": 25,
-      "height": 48,
+      "width": 54,
+      "height": 25,
       "border_width": 2,
       "border_height": 2,
       "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Cave",
+      "secondary_tileset": "gTileset_FuchsiaCity",
       "border_filepath": "data/layouts/MtSilver_MountainSide_1F/border.bin",
       "blockdata_filepath": "data/layouts/MtSilver_MountainSide_1F/map.bin"
     },
