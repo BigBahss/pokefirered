@@ -1291,7 +1291,7 @@ static const u8 sMapFlyDestinations[][3] = {
     [MAPSEC_SAFFRON_CITY        - MAPSECS_KANTO] = {MAP(SAFFRON_CITY),                          SPAWN_SAFFRON_CITY},
     [MAPSEC_ROUTE_4_POKECENTER  - MAPSECS_KANTO] = {MAP(ROUTE4),                                SPAWN_ROUTE4},
     [MAPSEC_ROUTE_10_POKECENTER - MAPSECS_KANTO] = {MAP(ROUTE10),                               SPAWN_ROUTE10},
-    [MAPSEC_MT_SILVER_EXTERIOR  - MAPSECS_KANTO] = {MAP(ROUTE28),                               SPAWN_MT_SILVER_EXTERIOR},
+    [MAPSEC_MT_SILVER_EXTERIOR  - MAPSECS_KANTO] = {MAP(MT_SILVER_EXTERIOR),                    SPAWN_MT_SILVER_EXTERIOR},
     [MAPSEC_ROUTE_1             - MAPSECS_KANTO] = {MAP(ROUTE1),                                0},
     [MAPSEC_ROUTE_2             - MAPSECS_KANTO] = {MAP(ROUTE2),                                0},
     [MAPSEC_ROUTE_3             - MAPSECS_KANTO] = {MAP(ROUTE3),                                0},
@@ -3447,6 +3447,8 @@ static u8 GetMapsecType(u8 mapsec)
         return FlagGet(FLAG_WORLD_MAP_ROUTE4_POKEMON_CENTER_1F) ? MAPSECTYPE_VISITED : MAPSECTYPE_NOT_VISITED;
     case MAPSEC_ROUTE_10_POKECENTER:
         return FlagGet(FLAG_WORLD_MAP_ROUTE10_POKEMON_CENTER_1F) ? MAPSECTYPE_VISITED : MAPSECTYPE_NOT_VISITED;
+    case MAPSEC_MT_SILVER_EXTERIOR:
+        return FlagGet(FLAG_WORLD_MAP_MT_SILVER_EXTERIOR) ? MAPSECTYPE_VISITED : MAPSECTYPE_NOT_VISITED;
     case MAPSEC_NONE:
         return MAPSECTYPE_NONE;
     default:
@@ -3522,6 +3524,8 @@ static u8 GetDungeonMapsecType(u8 mapsec)
         return FlagGet(FLAG_WORLD_MAP_SEVEN_ISLAND_SEVAULT_CANYON_TANOBY_KEY) ? MAPSECTYPE_VISITED : MAPSECTYPE_NOT_VISITED;
     case MAPSEC_BIRTH_ISLAND:
         return FlagGet(FLAG_WORLD_MAP_BIRTH_ISLAND_EXTERIOR) ? MAPSECTYPE_VISITED : MAPSECTYPE_NOT_VISITED;
+    case MAPSEC_MT_SILVER:
+        return FlagGet(FLAG_WORLD_MAP_MT_SILVER) ? MAPSECTYPE_VISITED : MAPSECTYPE_NOT_VISITED;
     default:
         return MAPSECTYPE_ROUTE;
     }
@@ -3796,6 +3800,15 @@ static void GetPlayerPositionOnRegionMap_HandleOverrides(void)
             GetPlayerPositionOnRegionMap();
         }
         break;
+    case MAPSEC_ROUTE_28:
+        sMapCursor->x = 1;
+        sMapCursor->y = 8;
+    case MAPSEC_MT_SILVER_EXTERIOR:
+        sMapCursor->x = 0;
+        sMapCursor->y = 8;
+    case MAPSEC_MT_SILVER:
+        sMapCursor->x = 0;
+        sMapCursor->y = 8;
     default:
         GetPlayerPositionOnRegionMap();
         break;
