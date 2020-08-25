@@ -3803,12 +3803,15 @@ static void GetPlayerPositionOnRegionMap_HandleOverrides(void)
     case MAPSEC_ROUTE_28:
         sMapCursor->x = 1;
         sMapCursor->y = 8;
+        break;
     case MAPSEC_MT_SILVER_EXTERIOR:
         sMapCursor->x = 0;
         sMapCursor->y = 8;
+        break;
     case MAPSEC_MT_SILVER:
         sMapCursor->x = 0;
         sMapCursor->y = 8;
+        break;
     default:
         GetPlayerPositionOnRegionMap();
         break;
