@@ -203,10 +203,14 @@
 #define MAPSEC_RIXY_CHAMBER                 0xC1
 #define MAPSEC_VIAPOIS_CHAMBER              0xC2
 #define MAPSEC_EMBER_SPA                    0xC3
-#define MAPSEC_ROUTE_28                     0xC4
-#define MAPSEC_MT_SILVER_EXTERIOR           0xC5
-#define MAPSEC_MT_SILVER                    0xC6
-#define MAPSEC_SPECIAL_AREA                 0xC7
+#define MAPSEC_SPECIAL_AREA                 0xC4
+
+#define MAPSECS_NEW                         0xC5
+
+#define MAPSEC_ROUTE_28                     0xC5
+#define MAPSEC_MT_SILVER_EXTERIOR           0xC6
+#define MAPSEC_MT_SILVER                    0xC7
+
 #define MAPSEC_NONE                         0xC8
 #define MAPSEC_COUNT                        0xC8
 

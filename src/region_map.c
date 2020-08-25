@@ -1007,6 +1007,8 @@ static const u16 sMapSectionTopLeftCorners[MAPSEC_COUNT][2] = {
     [MAPSEC_NAVEL_ROCK          - MAPSECS_KANTO] = {10,  8},
     [MAPSEC_BIRTH_ISLAND        - MAPSECS_KANTO] = {18, 13},
     [MAPSEC_ROUTE_28            - MAPSECS_KANTO] = { 0,  8},
+    [MAPSEC_MT_SILVER_EXTERIOR  - MAPSECS_KANTO] = { 0,  8},
+    [MAPSEC_MT_SILVER           - MAPSECS_KANTO] = { 0,  8}
 };
 
 static const u16 sMapSectionDimensions[MAPSEC_COUNT][2] = {
@@ -1119,6 +1121,8 @@ static const u16 sMapSectionDimensions[MAPSEC_COUNT][2] = {
     [MAPSEC_VIAPOIS_CHAMBER     - MAPSECS_KANTO] = {1, 1},
     [MAPSEC_EMBER_SPA           - MAPSECS_KANTO] = {1, 1},
     [MAPSEC_ROUTE_28            - MAPSECS_KANTO] = {2, 1},
+    [MAPSEC_MT_SILVER_EXTERIOR  - MAPSECS_KANTO] = {1, 1},
+    [MAPSEC_MT_SILVER           - MAPSECS_KANTO] = {1, 1}
 };
 
 static const u8 sRegionMapSections_Kanto[LAYER_COUNT][MAP_HEIGHT][MAP_WIDTH] = {
@@ -1482,12 +1486,12 @@ static void InitRegionMapType(void)
         sRegionMap->permissions[MAPPERM_HAS_SWITCH_BUTTON] = FALSE;
     region = REGIONMAP_KANTO;
     j = REGIONMAP_KANTO;
-    if (gMapHeader.regionMapSectionId >= MAPSECS_SEVII_123)
+    if (gMapHeader.regionMapSectionId >= MAPSECS_SEVII_123 && gMapHeader.regionMapSectionId < MAPSECS_NEW)
     {
         // Mapsec is in Sevii Islands, determine which map to use
         while (region == REGIONMAP_KANTO)
         {
-            for (i = 0; sSeviiMapsecs[j][i] != MAPSEC_NONE; i++)
+            for (i = 0; sSeviiMapsecs[j][i] != MAPSECS_NEW; i++)
             {
                 if (gMapHeader.regionMapSectionId == sSeviiMapsecs[j][i])
                 {
@@ -3804,14 +3808,6 @@ static void GetPlayerPositionOnRegionMap_HandleOverrides(void)
         sMapCursor->x = 1;
         sMapCursor->y = 8;
         break;
-    case MAPSEC_MT_SILVER_EXTERIOR:
-        sMapCursor->x = 0;
-        sMapCursor->y = 8;
-        break;
-    case MAPSEC_MT_SILVER:
-        sMapCursor->x = 0;
-        sMapCursor->y = 8;
-        break;
     default:
         GetPlayerPositionOnRegionMap();
         break;
@@ -4271,7 +4267,7 @@ u8 *GetMapName(u8 *dst0, u16 mapsec, u16 fill)
     u8 *dst;
     u16 i;
     u16 idx;;
-    if ((idx = mapsec - MAPSECS_KANTO) <= MAPSEC_SPECIAL_AREA - MAPSECS_KANTO)
+    if ((idx = mapsec - MAPSECS_KANTO) < MAPSEC_NONE - MAPSECS_KANTO)
     {
         if (IsCeladonDeptStoreMapsec(mapsec) == TRUE)
             dst = StringCopy(dst0, gMapSecName_CeladonDept);
