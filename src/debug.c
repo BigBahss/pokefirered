@@ -25,52 +25,43 @@
 #include "constants/species.h"
 #include "constants/songs.h"
 
-#define DEBUG_MAIN_MENU_HEIGHT 7
+#define DEBUG_MAIN_MENU_HEIGHT DEBUG_MENU_ITEM_COUNT
 #define DEBUG_MAIN_MENU_WIDTH 11
 
 void Debug_ShowMainMenu(void);
 static void Debug_DestroyMainMenu(u8);
 static void DebugAction_WildEncounters(u8);
-static void DebugAction_RareCandy(u8);
-static void DebugAction_MasterBall(u8);
-static void DebugAction_Mew(u8);
-static void DebugAction_Warp(u8);
+static void DebugAction_GiveStuff(u8);
+static void DebugAction_WarpMtSilver(u8);
 static void DebugAction_Cancel(u8);
 static void DebugTask_HandleMainMenuInput(u8);
 
 static const u8 gDebugText_WildEncounters[] = _("Encounters");
-static const u8 gDebugText_RareCandy[] = _("Rare Candies");
-static const u8 gDebugText_MasterBall[] = _("Master Balls");
-static const u8 gDebugText_Mew[] = _("Mew + HMs");
-static const u8 gDebugText_Warp[] = _("Warp");
+static const u8 gDebugText_GiveStuff[] = _("Give Stuff");
+static const u8 gDebugText_WarpMtSilver[] = _("Warp Mt Silver");
 static const u8 gDebugText_Cancel[] = _("Cancel");
 
 enum {
-    DEBUG_MENU_ITEM_WILD_ENCOUNTERS,
-    DEBUG_MENU_ITEM_RARE_CANDY,
-    DEBUG_MENU_ITEM_MASTER_BALL,
-    DEBUG_MENU_ITEM_MEW,
-    DEBUG_MENU_ITEM_WARP,
+    DEBUG_MENU_ITEM_WILD_ENCOUNTERS = 0,
+    DEBUG_MENU_ITEM_GIVE_STUFF,
+    DEBUG_MENU_ITEM_WARP_MT_SILVER,
     DEBUG_MENU_ITEM_CANCEL,
+    DEBUG_MENU_ITEM_COUNT
 };
 
 static const struct ListMenuItem sDebugMenuItems[] =
 {
     [DEBUG_MENU_ITEM_WILD_ENCOUNTERS] = {gDebugText_WildEncounters, DEBUG_MENU_ITEM_WILD_ENCOUNTERS},
-    [DEBUG_MENU_ITEM_RARE_CANDY] = {gDebugText_RareCandy, DEBUG_MENU_ITEM_RARE_CANDY},
-    [DEBUG_MENU_ITEM_MASTER_BALL] = {gDebugText_MasterBall, DEBUG_MENU_ITEM_MASTER_BALL},
-    [DEBUG_MENU_ITEM_MEW] = {gDebugText_Mew, DEBUG_MENU_ITEM_MEW},
-    [DEBUG_MENU_ITEM_WARP] = {gDebugText_Warp, DEBUG_MENU_ITEM_WARP},
+    [DEBUG_MENU_ITEM_GIVE_STUFF] = {gDebugText_GiveStuff, DEBUG_MENU_ITEM_GIVE_STUFF},
+    [DEBUG_MENU_ITEM_WARP_MT_SILVER] = {gDebugText_WarpMtSilver, DEBUG_MENU_ITEM_WARP_MT_SILVER},
     [DEBUG_MENU_ITEM_CANCEL] = {gDebugText_Cancel, DEBUG_MENU_ITEM_CANCEL},
 };
 
 static void (*const sDebugMenuActions[])(u8) =
 {
     [DEBUG_MENU_ITEM_WILD_ENCOUNTERS] = DebugAction_WildEncounters,
-    [DEBUG_MENU_ITEM_RARE_CANDY] = DebugAction_RareCandy,
-    [DEBUG_MENU_ITEM_MASTER_BALL] = DebugAction_MasterBall,
-    [DEBUG_MENU_ITEM_MEW] = DebugAction_Mew,
-    [DEBUG_MENU_ITEM_WARP] = DebugAction_Warp,
+    [DEBUG_MENU_ITEM_GIVE_STUFF] = DebugAction_GiveStuff,
+    [DEBUG_MENU_ITEM_WARP_MT_SILVER] = DebugAction_WarpMtSilver,
     [DEBUG_MENU_ITEM_CANCEL] = DebugAction_Cancel,
 };
 
@@ -162,24 +153,17 @@ static void DebugTask_HandleMainMenuInput(u8 taskId)
 
 static void DebugAction_WildEncounters(u8 taskId)
 {
-    if (FlagGet(FLAG_DEBUG_DISABLE_WILD_ENCOUNTERS) == 0)
-        FlagSet(FLAG_DEBUG_DISABLE_WILD_ENCOUNTERS);
-    else
+    if (FlagGet(FLAG_DEBUG_DISABLE_WILD_ENCOUNTERS)) {
         FlagClear(FLAG_DEBUG_DISABLE_WILD_ENCOUNTERS);
+    } else{
+        FlagSet(FLAG_DEBUG_DISABLE_WILD_ENCOUNTERS);
+    }
 }
 
-static void DebugAction_RareCandy(u8 taskId)
+static void DebugAction_GiveStuff(u8 taskId)
 {
     AddBagItem(ITEM_RARE_CANDY, 99);
-}
-
-static void DebugAction_MasterBall(u8 taskId)
-{
     AddBagItem(ITEM_MASTER_BALL, 99);
-}
-
-static void DebugAction_Mew(u8 taskId)
-{
     ScriptGiveMon(SPECIES_MEW, 100, 0, 0, 0, 0);
     DeleteFirstMoveAndGiveMoveToMon(&gPlayerParty[gPlayerPartyCount - 1], MOVE_SURF);
     DeleteFirstMoveAndGiveMoveToMon(&gPlayerParty[gPlayerPartyCount - 1], MOVE_FLY);
@@ -203,7 +187,7 @@ static void DebugAction_Mew(u8 taskId)
     FlagSet(FLAG_BADGE08_GET);
 }
 
-static void DebugAction_Warp(u8 taskId)
+static void DebugAction_WarpMtSilver(u8 taskId)
 {
     SetWarpDestinationToMapWarp(MAP_GROUP(MT_SILVER_EXTERIOR), MAP_NUM(MT_SILVER_EXTERIOR), 0);
     DoWarp();
