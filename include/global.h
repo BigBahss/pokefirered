@@ -287,6 +287,7 @@ struct SaveBlock2
     /*0xB10*/ struct BerryPickingResults berryPick;
     /*0xB20*/ u8 filler_B20[0x400];
     /*0xF20*/ u32 encryptionKey;
+    /*0xF40*/ bool8 autoRun;
 };
 
 extern struct SaveBlock2 *gSaveBlock2Ptr;
