@@ -2,7 +2,7 @@
   "id": "MAP_MT_SILVER_MOUNTAIN_SIDE_1F",
   "name": "MtSilver_MountainSide_1F",
   "layout": "LAYOUT_MT_SILVER_MOUNTAIN_SIDE_1F",
-  "music": "MUS_CHAMP_R",
+  "music": "MUS_VICTORY_ROAD",
   "region_map_section": "MAPSEC_MT_SILVER",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
