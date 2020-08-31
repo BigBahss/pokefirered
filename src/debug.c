@@ -8,6 +8,7 @@
 #include "main.h"
 #include "map_name_popup.h"
 #include "menu.h"
+#include "money.h"
 #include "new_menu_helpers.h"
 #include "overworld.h"
 #include "party_menu.h"
@@ -162,6 +163,7 @@ static void DebugAction_WildEncounters(u8 taskId)
 
 static void DebugAction_GiveStuff(u8 taskId)
 {
+    SetMoney(&gSaveBlock1Ptr->money, 999999);
     AddBagItem(ITEM_RARE_CANDY, 99);
     AddBagItem(ITEM_MASTER_BALL, 99);
     ScriptGiveMon(SPECIES_MEW, 100, 0, 0, 0, 0);
