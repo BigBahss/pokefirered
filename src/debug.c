@@ -156,7 +156,7 @@ static void DebugAction_WildEncounters(u8 taskId)
 {
     if (FlagGet(FLAG_DEBUG_DISABLE_WILD_ENCOUNTERS)) {
         FlagClear(FLAG_DEBUG_DISABLE_WILD_ENCOUNTERS);
-    } else{
+    } else {
         FlagSet(FLAG_DEBUG_DISABLE_WILD_ENCOUNTERS);
     }
 }
