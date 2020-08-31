@@ -1090,7 +1090,7 @@ void HandleBoulderFallThroughHole(struct ObjectEvent * object)
 {
     if (MapGridGetMetatileBehaviorAt(object->currentCoords.x, object->currentCoords.y) == MB_FALL_WARP)
     {
-        PlaySE(SE_RU_HYUU);
+        PlaySE(SE_FALL);
         RemoveObjectEventByLocalIdAndMap(object->localId, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup);
         FlagClear(GetObjectEventFlagByLocalIdAndMap(object->localId, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup));
     }
@@ -1146,7 +1146,7 @@ bool8 dive_warp(struct MapPosition *position, u16 metatileBehavior)
         {
             StoreInitialPlayerAvatarState();
             DoDiveWarp();
-            PlaySE(SE_W291);
+            PlaySE(SE_M_DIVE);
             return TRUE;
         }
     }
@@ -1156,7 +1156,7 @@ bool8 dive_warp(struct MapPosition *position, u16 metatileBehavior)
         {
             StoreInitialPlayerAvatarState();
             DoDiveWarp();
-            PlaySE(SE_W291);
+            PlaySE(SE_M_DIVE);
             return TRUE;
         }
     }
