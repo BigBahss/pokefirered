@@ -138,7 +138,7 @@ static void sub_813ACB4(void);
 static void sub_813AF50(void);
 static void sub_813B068(void);
 static void sub_813B0E4(void);
-static s8 sub_813B20C(s8);
+static s8 AdvanceMonIndex(s8);
 static s8 sub_813B38C(s8);
 
 struct PokemonSummaryScreenData
@@ -4921,7 +4921,7 @@ static void sub_813B120(u8 taskId, s8 a1)
             && IsMultiBattle() == TRUE)
             v0 = sub_813B38C(a1);
         else
-            v0 = sub_813B20C(a1);
+            v0 = AdvanceMonIndex(a1);
     }
 
     if (v0 == -1)
@@ -4932,32 +4932,31 @@ static void sub_813B120(u8 taskId, s8 a1)
     sMonSummaryScreen->unk328C = 0;
 }
 
-static s8 sub_813B20C(s8 a0)
+static s8 AdvanceMonIndex(s8 delta)
 {
     struct Pokemon * partyMons = sMonSummaryScreen->monList.mons;
-    s8 v1 = 0;
 
-    if (sMonSummaryScreen->curPageIndex == 0)
+    if (sMonSummaryScreen->curPageIndex == PSS_PAGE_INFO)
     {
-        if (a0 == -1 && sLastViewedMonIndex == 0)
+        if (delta == -1 && sLastViewedMonIndex == 0)
             return -1;
-        else if (a0 == 1 && sLastViewedMonIndex >= sMonSummaryScreen->lastIndex)
+        else if (delta == 1 && sLastViewedMonIndex >= sMonSummaryScreen->lastIndex)
             return -1;
         else
-            return sLastViewedMonIndex + a0;
+            return sLastViewedMonIndex + delta;
     }
-
-    while (TRUE)
+    else
     {
-        v1 += a0;
-        if (0 > sLastViewedMonIndex + v1 || sLastViewedMonIndex + v1 > sMonSummaryScreen->lastIndex)
-            return -1;
+        s8 index = sLastViewedMonIndex;
 
-        if (GetMonData(&partyMons[sLastViewedMonIndex + v1], MON_DATA_IS_EGG) == 0)
-            return sLastViewedMonIndex + v1;
+        do
+        {
+            index += delta;
+            if (index < 0 || index > sMonSummaryScreen->lastIndex)
+                return -1;
+        } while (GetMonData(&partyMons[index], MON_DATA_IS_EGG));
+        return index;
     }
-
-    return -1;
 }
 
 static u8 sub_813B2C8(struct Pokemon * partyMons)
