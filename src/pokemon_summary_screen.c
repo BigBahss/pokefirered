@@ -3740,18 +3740,6 @@ static void sub_8139328(struct Pokemon * mon)
     }
 }
 
-static u8 sub_8139388(void)
-{
-    u16 move;
-
-    move = sub_8138BEC(&sMonSummaryScreen->currentMon, sUnknown_203B16D);
-
-    if (IsMoveHm(move) == TRUE && sMonSummaryScreen->mode != PSS_MODE_FORGET_MOVE)
-        return FALSE;
-
-    return TRUE;
-}
-
 static void sub_81393D4(u8 taskId)
 {
     u8 i;
@@ -3829,18 +3817,10 @@ static void sub_81393D4(u8 taskId)
         }
         else if (JOY_NEW(A_BUTTON))
         {
-            if (sub_8139388() == TRUE || sUnknown_203B16D == 4)
-            {
-                PlaySE(SE_SELECT);
-                sUnknown_203B16E = sUnknown_203B16D;
-                gSpecialVar_0x8005 = sUnknown_203B16E;
-                sMonSummaryScreen->unk3288 = 6;
-            }
-            else
-            {
-                PlaySE(SE_FAILURE);
-                sMonSummaryScreen->unk3288 = 5;
-            }
+            PlaySE(SE_SELECT);
+            sUnknown_203B16E = sUnknown_203B16D;
+            gSpecialVar_0x8005 = sUnknown_203B16E;
+            sMonSummaryScreen->unk3288 = 6;
         }
         else if (JOY_NEW(B_BUTTON))
         {
