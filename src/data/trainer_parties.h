@@ -6219,12 +6219,14 @@ static const struct TrainerMonNoItemCustomMoves sTrainerMons_823C610[] = {
     {
         .iv = 0,
         .lvl = 12,
+        .evs = {0, 252, 252, 0, 0, 0},
         .species = SPECIES_GEODUDE,
         .moves = {MOVE_TACKLE, MOVE_DEFENSE_CURL, MOVE_NONE, MOVE_NONE},
     },
     {
         .iv = 0,
         .lvl = 14,
+        .evs = {0, 252, 252, 0, 0, 0},
         .species = SPECIES_ONIX,
         .moves = {MOVE_TACKLE, MOVE_BIND, MOVE_ROCK_TOMB, MOVE_NONE},
     },
