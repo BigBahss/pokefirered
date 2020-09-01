@@ -16,7 +16,7 @@
   "connections": [
     {
       "direction": "left",
-      "offset": -18,
+      "offset": -16,
       "map": "MAP_MT_SILVER_EXTERIOR"
     }
   ],
@@ -25,18 +25,11 @@
   ],
   "warp_events": [
     {
-      "x": 33,
-      "y": 5,
+      "x": 49,
+      "y": 10,
       "elevation": 0,
-      "dest_map": "MAP_PALLET_TOWN",
-      "dest_warp_id": 0
-    },
-    {
-      "x": 7,
-      "y": 3,
-      "elevation": 0,
-      "dest_map": "MAP_ROUTE28_HOUSE",
-      "dest_warp_id": 0
+      "dest_map": "MAP_ROUTE22_NORTH_ENTRANCE",
+      "dest_warp_id": 4
     }
   ],
   "coord_events": [
