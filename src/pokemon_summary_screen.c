@@ -4934,29 +4934,23 @@ static void sub_813B120(u8 taskId, s8 a1)
 
 static s8 AdvanceMonIndex(s8 delta)
 {
-    struct Pokemon * partyMons = sMonSummaryScreen->monList.mons;
+    struct Pokemon *partyMons = sMonSummaryScreen->monList.mons;
+    u8 index = sLastViewedMonIndex;
+    u8 numMons = sMonSummaryScreen->lastIndex + 1;
+    delta += numMons;
 
-    if (sMonSummaryScreen->curPageIndex == PSS_PAGE_INFO)
-    {
-        if (delta == -1 && sLastViewedMonIndex == 0)
-            return -1;
-        else if (delta == 1 && sLastViewedMonIndex >= sMonSummaryScreen->lastIndex)
-            return -1;
-        else
-            return sLastViewedMonIndex + delta;
-    }
+    index = (index + delta) % numMons;
+
+    // skip over any Eggs unless on the Info Page
+    if (sMonSummaryScreen->curPageIndex != PSS_PAGE_INFO)
+        while (GetMonData(&partyMons[index], MON_DATA_IS_EGG))
+            index = (index + delta) % numMons;
+
+    // to avoid "scrolling" to the same Pokemon
+    if (index == sLastViewedMonIndex)
+        return -1;
     else
-    {
-        s8 index = sLastViewedMonIndex;
-
-        do
-        {
-            index += delta;
-            if (index < 0 || index > sMonSummaryScreen->lastIndex)
-                return -1;
-        } while (GetMonData(&partyMons[index], MON_DATA_IS_EGG));
         return index;
-    }
 }
 
 static u8 sub_813B2C8(struct Pokemon * partyMons)
