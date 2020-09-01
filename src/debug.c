@@ -27,7 +27,7 @@
 #include "constants/songs.h"
 
 #define DEBUG_MAIN_MENU_HEIGHT DEBUG_MENU_ITEM_COUNT
-#define DEBUG_MAIN_MENU_WIDTH 11
+#define DEBUG_MAIN_MENU_WIDTH 20
 
 void Debug_ShowMainMenu(void);
 static void Debug_DestroyMainMenu(u8);
@@ -37,9 +37,9 @@ static void DebugAction_WarpMtSilver(u8);
 static void DebugAction_Cancel(u8);
 static void DebugTask_HandleMainMenuInput(u8);
 
-static const u8 gDebugText_WildEncounters[] = _("Encounters");
+static const u8 gDebugText_WildEncounters[] = _("Encounters & Trainers");
 static const u8 gDebugText_GiveStuff[] = _("Give Stuff");
-static const u8 gDebugText_WarpMtSilver[] = _("Warp Mt Silver");
+static const u8 gDebugText_WarpMtSilver[] = _("Warp Mt Silver Pokecenter");
 static const u8 gDebugText_Cancel[] = _("Cancel");
 
 enum {
