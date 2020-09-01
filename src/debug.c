@@ -173,10 +173,16 @@ static void DebugAction_GiveStuff(u8 taskId)
     AddBagItem(ITEM_RARE_CANDY, 99);
     AddBagItem(ITEM_MASTER_BALL, 99);
     ScriptGiveMon(SPECIES_MEW, 100, 0, 0, 0, 0);
-    DeleteFirstMoveAndGiveMoveToMon(&gPlayerParty[gPlayerPartyCount - 1], MOVE_SURF);
     DeleteFirstMoveAndGiveMoveToMon(&gPlayerParty[gPlayerPartyCount - 1], MOVE_FLY);
-    DeleteFirstMoveAndGiveMoveToMon(&gPlayerParty[gPlayerPartyCount - 1], MOVE_WATERFALL);
+    DeleteFirstMoveAndGiveMoveToMon(&gPlayerParty[gPlayerPartyCount - 1], MOVE_ROCK_SMASH);
+    DeleteFirstMoveAndGiveMoveToMon(&gPlayerParty[gPlayerPartyCount - 1], MOVE_FLASH);
     DeleteFirstMoveAndGiveMoveToMon(&gPlayerParty[gPlayerPartyCount - 1], MOVE_CUT);
+    ScriptGiveMon(SPECIES_MEWTWO, 100, 0, 0, 0, 0);
+    DeleteFirstMoveAndGiveMoveToMon(&gPlayerParty[gPlayerPartyCount - 1], MOVE_PSYCHIC);
+    DeleteFirstMoveAndGiveMoveToMon(&gPlayerParty[gPlayerPartyCount - 1], MOVE_SURF);
+    DeleteFirstMoveAndGiveMoveToMon(&gPlayerParty[gPlayerPartyCount - 1], MOVE_STRENGTH);
+    DeleteFirstMoveAndGiveMoveToMon(&gPlayerParty[gPlayerPartyCount - 1], MOVE_WATERFALL);
+    SwitchMons(&gPlayerParty[0], &gPlayerParty[gPlayerPartyCount - 1]);
     AddBagItem(ITEM_HM01, 1);
     AddBagItem(ITEM_HM02, 1);
     AddBagItem(ITEM_HM03, 1);

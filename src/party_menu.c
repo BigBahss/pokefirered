@@ -6383,3 +6383,8 @@ static void Task_PartyMenuWaitForFade(u8 taskId)
         EnableBothScriptContexts();
     }
 }
+
+void SwitchMons(struct Pokemon *mon1, struct Pokemon *mon2)
+{
+    SwapPartyPokemon(mon1, mon2);
+}

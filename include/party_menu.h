@@ -83,5 +83,6 @@ u8 GetPartyIdFromBattlePartyId(u8 battlePartyId);
 void ShowPartyMenuToShowcaseMultiBattleParty(void);
 void ChooseMonForDaycare(void);
 void ChoosePartyMonByMenuType(u8 menuType);
+void SwitchMons(struct Pokemon *mon1, struct Pokemon *mon2);
 
 #endif // GUARD_PARTY_MENU_H
