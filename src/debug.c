@@ -159,6 +159,12 @@ static void DebugAction_WildEncounters(u8 taskId)
     } else {
         FlagSet(FLAG_DEBUG_DISABLE_WILD_ENCOUNTERS);
     }
+
+    if (FlagGet(FLAG_DEBUG_DISABLE_TRAINER_SIGHT)) {
+        FlagClear(FLAG_DEBUG_DISABLE_TRAINER_SIGHT);
+    } else {
+        FlagSet(FLAG_DEBUG_DISABLE_TRAINER_SIGHT);
+    }
 }
 
 static void DebugAction_GiveStuff(u8 taskId)

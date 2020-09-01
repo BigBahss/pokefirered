@@ -183,9 +183,9 @@
 
 // used for debug menu
 #define FLAG_DEBUG_DISABLE_WILD_ENCOUNTERS                 0x0AF
+#define FLAG_DEBUG_DISABLE_TRAINER_SIGHT                   0x0B0
 
 // Unused?
-#define FLAG_0x0B0               0x0B0
 #define FLAG_0x0B1               0x0B1
 #define FLAG_0x0B2               0x0B2
 #define FLAG_0x0B3               0x0B3

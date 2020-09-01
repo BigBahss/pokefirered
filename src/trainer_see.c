@@ -1,5 +1,6 @@
 #include "global.h"
 #include "battle_setup.h"
+#include "event_data.h"
 #include "event_object_movement.h"
 #include "field_effect.h"
 #include "field_player_avatar.h"
@@ -10,6 +11,7 @@
 #include "constants/battle_setup.h"
 #include "constants/event_object_movement.h"
 #include "constants/event_objects.h"
+#include "constants/flags.h"
 
 typedef u8 (*TrainerApproachFunc)(struct ObjectEvent *, s16, s16, s16);
 typedef bool8 (*TrainerSeeFunc)(u8, struct Task *, struct ObjectEvent *);
@@ -87,7 +89,7 @@ static const TrainerSeeFunc sTrainerSeeFuncList2[] = {
 bool8 CheckForTrainersWantingBattle(void)
 {
     u8 i;
-    if (sub_8111C2C() == TRUE)
+    if (sub_8111C2C() == TRUE || FlagGet(FLAG_DEBUG_DISABLE_TRAINER_SIGHT))
         return FALSE;
 
     for (i = 0; i < OBJECT_EVENTS_COUNT; i++)

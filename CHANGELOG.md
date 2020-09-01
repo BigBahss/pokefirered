@@ -3,7 +3,7 @@
 1. Add Physical/Special split as seen in Gen 4 onward. Currently this change has no visual indication in game (such showing move physicality in the Pokemon summary screen). Therefore it is currently up to the player to know whether a move is physical, special, or other.
 
 2. Add simple debug menu in debug builds of the game. The menu is opened by pressing R+Start. The menu options are as follows:
-- Turn wild encounters on/off
+- Encounters: Turn wild encounters on/off and trainer sight (You can still battle trainers by talking to them).
 - Give Stuff: Gives max money, 99 Rare Candies & Master Balls, a Lv100 Mew, all HM's, and all badges.
 - Warp to Mt Silver (Route 28 and Mt Silver are a work in progress)
 
