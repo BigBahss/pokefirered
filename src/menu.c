@@ -360,17 +360,17 @@ s8 Menu_ProcessInput(void)
             PlaySE(SE_SELECT);
         return sMenu.cursorPos;
     }
-    else if (JOY_NEW(B_BUTTON))
+    if (JOY_NEW(B_BUTTON))
     {
         return MENU_B_PRESSED;
     }
-    else if (JOY_NEW(DPAD_UP))
+    if (JOY_NEW(DPAD_UP))
     {
         PlaySE(SE_SELECT);
         Menu_MoveCursor(-1);
         return MENU_NOTHING_CHOSEN;
     }
-    else if (JOY_NEW(DPAD_DOWN))
+    if (JOY_NEW(DPAD_DOWN))
     {
         PlaySE(SE_SELECT);
         Menu_MoveCursor(1);
@@ -389,17 +389,17 @@ s8 Menu_ProcessInputNoWrapAround(void)
             PlaySE(SE_SELECT);
         return sMenu.cursorPos;
     }
-    else if (JOY_NEW(B_BUTTON))
+    if (JOY_NEW(B_BUTTON))
     {
         return MENU_B_PRESSED;
     }
-    else if (JOY_NEW(DPAD_UP))
+    if (JOY_NEW(DPAD_UP))
     {
         if (oldPos != Menu_MoveCursorNoWrapAround(-1))
             PlaySE(SE_SELECT);
         return MENU_NOTHING_CHOSEN;
     }
-    else if (JOY_NEW(DPAD_DOWN))
+    if (JOY_NEW(DPAD_DOWN))
     {
         if (oldPos != Menu_MoveCursorNoWrapAround(1))
             PlaySE(SE_SELECT);
@@ -416,17 +416,17 @@ s8 Menu_ProcessInput_other(void)
             PlaySE(SE_SELECT);
         return sMenu.cursorPos;
     }
-    else if (JOY_NEW(B_BUTTON))
+    if (JOY_NEW(B_BUTTON))
     {
         return MENU_B_PRESSED;
     }
-    else if (JOY_REPT(DPAD_ANY) == DPAD_UP)
+    if (JOY_REPT(DPAD_ANY) == DPAD_UP)
     {
         PlaySE(SE_SELECT);
         Menu_MoveCursor(-1);
         return MENU_NOTHING_CHOSEN;
     }
-    else if (JOY_REPT(DPAD_ANY) == DPAD_DOWN)
+    if (JOY_REPT(DPAD_ANY) == DPAD_DOWN)
     {
         PlaySE(SE_SELECT);
         Menu_MoveCursor(1);
@@ -445,17 +445,17 @@ s8 Menu_ProcessInputNoWrapAround_other(void)
             PlaySE(SE_SELECT);
         return sMenu.cursorPos;
     }
-    else if (JOY_NEW(B_BUTTON))
+    if (JOY_NEW(B_BUTTON))
     {
         return MENU_B_PRESSED;
     }
-    else if (JOY_REPT(DPAD_ANY) == DPAD_UP)
+    if (JOY_REPT(DPAD_ANY) == DPAD_UP)
     {
         if (oldPos != Menu_MoveCursorNoWrapAround(-1))
             PlaySE(SE_SELECT);
         return MENU_NOTHING_CHOSEN;
     }
-    else if (JOY_REPT(DPAD_ANY) == DPAD_DOWN)
+    if (JOY_REPT(DPAD_ANY) == DPAD_DOWN)
     {
         if (oldPos != Menu_MoveCursorNoWrapAround(1))
             PlaySE(SE_SELECT);
