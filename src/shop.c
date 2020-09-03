@@ -946,14 +946,25 @@ static void BuyMenuDrawMapBg(void)
 
             if (metatile < NUM_METATILES_IN_PRIMARY)
             {
-                BuyMenuDrawMapMetatile(i, j, (u16*)mapLayout->primaryTileset->metatiles + metatile * 8, metatileLayerType);
+                BuyMenuDrawMapMetatile(i, j, (u16*)mapLayout->primaryTileset->metatiles + metatile * 12, metatileLayerType);
             }
             else
             {
-                BuyMenuDrawMapMetatile(i, j, (u16*)mapLayout->secondaryTileset->metatiles + ((metatile - NUM_METATILES_IN_PRIMARY) * 8), metatileLayerType);
+                BuyMenuDrawMapMetatile(i, j, (u16*)mapLayout->secondaryTileset->metatiles + ((metatile - NUM_METATILES_IN_PRIMARY) * 12), metatileLayerType);
             }
         }
     }
+}
+
+static bool8 IsMetatileLayerEmpty(const u16 *src)
+{
+    u32 i = 0;
+    for(i = 0; i < 4; ++i)
+    {
+        if((src[i] & 0x3FF) != 0)
+            return FALSE;
+    }
+    return TRUE;
 }
 
 static void BuyMenuDrawMapMetatile(s16 x, s16 y, const u16 *src, u8 metatileLayerType)
@@ -1076,6 +1087,23 @@ static void BuyMenuPrintItemQuantityAndPrice(u8 taskId)
     StringExpandPlaceholders(gStringVar4, gText_TimesStrVar1);
     BuyMenuPrint(3, 0, gStringVar4, 2, 0xA, 0, 0, 0, 1);
 }
+
+// static bool8 BuyMenuCheckForOverlapWithMenuBg(int x, int y)
+// {
+//     const u16 *metatile = gShopDataPtr->tilemapBuffers[0];
+//     int offset1 = x * 2;
+//     int offset2 = y * 64;
+
+//     if (metatile[offset2 + offset1] == 0 &&
+//         metatile[offset2 + offset1 + 32] == 0 &&
+//         metatile[offset2 + offset1 + 1] == 0 &&
+//         metatile[offset2 + offset1 + 33] == 0)
+//     {
+//         return TRUE;
+//     }
+
+//     return FALSE;
+// }
 
 static void Task_BuyMenu(u8 taskId)
 {

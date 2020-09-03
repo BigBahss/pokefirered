@@ -217,7 +217,7 @@ void DrawDoorMetatileAt(int x, int y, const u16 *arr)
 
     if (offset >= 0)
     {
-        DrawMetatile(0xFF, arr, offset);
+        DrawMetatile(0xFF, (u16 *)arr, offset);
        // sFieldCameraOffset.copyBGToVRAM = TRUE;
     }
 }
