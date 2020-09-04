@@ -31,19 +31,19 @@
 
 void Debug_ShowMainMenu(void);
 static void Debug_DestroyMainMenu(u8);
-static void DebugAction_WildEncounters(u8);
+static void DebugAction_Encounters(u8);
 static void DebugAction_GiveStuff(u8);
 static void DebugAction_WarpMtSilver(u8);
 static void DebugAction_Cancel(u8);
 static void DebugTask_HandleMainMenuInput(u8);
 
-static const u8 gDebugText_WildEncounters[] = _("Encounters & Trainers");
+static const u8 gDebugText_Encounters[] = _("Encounters & Trainers");
 static const u8 gDebugText_GiveStuff[] = _("Give Stuff");
-static const u8 gDebugText_WarpMtSilver[] = _("Warp Mt Silver Pokecenter");
+static const u8 gDebugText_WarpMtSilver[] = _("Warp Mt Silver");
 static const u8 gDebugText_Cancel[] = _("Cancel");
 
 enum {
-    DEBUG_MENU_ITEM_WILD_ENCOUNTERS = 0,
+    DEBUG_MENU_ITEM_ENCOUNTERS = 0,
     DEBUG_MENU_ITEM_GIVE_STUFF,
     DEBUG_MENU_ITEM_WARP_MT_SILVER,
     DEBUG_MENU_ITEM_CANCEL,
@@ -52,7 +52,7 @@ enum {
 
 static const struct ListMenuItem sDebugMenuItems[] =
 {
-    [DEBUG_MENU_ITEM_WILD_ENCOUNTERS] = {gDebugText_WildEncounters, DEBUG_MENU_ITEM_WILD_ENCOUNTERS},
+    [DEBUG_MENU_ITEM_ENCOUNTERS] = {gDebugText_Encounters, DEBUG_MENU_ITEM_ENCOUNTERS},
     [DEBUG_MENU_ITEM_GIVE_STUFF] = {gDebugText_GiveStuff, DEBUG_MENU_ITEM_GIVE_STUFF},
     [DEBUG_MENU_ITEM_WARP_MT_SILVER] = {gDebugText_WarpMtSilver, DEBUG_MENU_ITEM_WARP_MT_SILVER},
     [DEBUG_MENU_ITEM_CANCEL] = {gDebugText_Cancel, DEBUG_MENU_ITEM_CANCEL},
@@ -60,7 +60,7 @@ static const struct ListMenuItem sDebugMenuItems[] =
 
 static void (*const sDebugMenuActions[])(u8) =
 {
-    [DEBUG_MENU_ITEM_WILD_ENCOUNTERS] = DebugAction_WildEncounters,
+    [DEBUG_MENU_ITEM_ENCOUNTERS] = DebugAction_Encounters,
     [DEBUG_MENU_ITEM_GIVE_STUFF] = DebugAction_GiveStuff,
     [DEBUG_MENU_ITEM_WARP_MT_SILVER] = DebugAction_WarpMtSilver,
     [DEBUG_MENU_ITEM_CANCEL] = DebugAction_Cancel,
@@ -152,7 +152,7 @@ static void DebugTask_HandleMainMenuInput(u8 taskId)
     }
 }
 
-static void DebugAction_WildEncounters(u8 taskId)
+static void DebugAction_Encounters(u8 taskId)
 {
     if (FlagGet(FLAG_DEBUG_DISABLE_WILD_ENCOUNTERS)) {
         FlagClear(FLAG_DEBUG_DISABLE_WILD_ENCOUNTERS);
@@ -203,7 +203,7 @@ static void DebugAction_GiveStuff(u8 taskId)
 
 static void DebugAction_WarpMtSilver(u8 taskId)
 {
-    SetWarpDestinationToMapWarp(MAP_GROUP(MT_SILVER_EXTERIOR), MAP_NUM(MT_SILVER_EXTERIOR), 0);
+    SetWarpDestinationToMapWarp(MAP_GROUP(MT_SILVER_3F), MAP_NUM(MT_SILVER_3F), 0);
     DoWarp();
     Debug_DestroyMainMenu(taskId);
 }
